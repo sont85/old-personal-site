@@ -74,20 +74,6 @@ function arrayAnalyzer(num1,num2,num3,num4,num5,num6,num7) {
 }
 
 
-function wordsReverser(str) {
-  words = str.split(" ");
-  result = [];
-  for (var i=0; i<words.length; i++) {
-    result.push(words[i].split("").reverse().join(""));
-  }
-  return result.join(" ");
-}
-
-function wordsReverser(str) {
-    return str.split(/(\b|\s)/g).map(function(word) {
-        return word.split('').reverse().join('');
-    }).join('');
-}
 
 function wordsReverser(str) {
   return str.split(/\b/).map(function (word) {
