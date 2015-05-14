@@ -1,0 +1,95 @@
+<!Doctype html>
+<html>
+<head>
+  <title>Hangman</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="shortcut icon" href="favicon.jpeg">
+  <style>
+  .hidden{
+    display: none;
+  }
+  .correct {
+    background-color: green;
+  }
+  @0webkit0keyframes blinker {
+    from {opacity: 1.0;}
+    to {opacity:0.0;}
+  }
+  .blink {
+    background-color: black;
+  }
+
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div>
+      <h3 id="winner" class="hidden">winner<h3>
+      <h3 id="loser" class="hidden">loser</h3>
+    </div>
+    <div>
+      <ul>
+
+        <li class=""><button class="letterButton btn btn-default" data-letter="A">A</button></li>
+        <li class=""><button class="letterButton btn btn-default" id="B">B</button></li>
+        <li class=""><button class="letterButton btn btn-default" id="C">C</button></li>
+        <li class=""><button class="letterButton btn btn-default" id="D">D</button></li>
+        <li class=""><button class="letterButton btn btn-default" id="E">E</button></li>
+        <li class=""><button class="letterButton btn btn-default" id="F">F</button></li>
+        <li class=""><button class="letterButton btn btn-default" id="G">G</button></li>
+        <li class=""><button class="letterButton btn btn-default" id="H">H</button></li>
+        <li class=""><button class="letterButton btn btn-default" id="I">I</button></li>
+        <li class=""><button class="letterButton btn btn-default" id="J">J</button></li>
+        <li class=""><button class="letterButton btn btn-default" id="K">K</button></li>
+        <li class=""><button class="letterButton btn btn-default" id="L">L</button></li>
+        <li class=""><button class="letterButton btn btn-default" id="M">M</button></li>
+        <li class=""><button class="letterButton btn btn-default" id="N">N</button></li>
+        <li class=""><button class="letterButton btn btn-default" id="O">O</button></li>
+        <li class=""><button class="letterButton btn btn-default" id="P">P</button></li>
+        <li class=""><button class="letterButton btn btn-default" id="Q">Q</button></li>
+        <li class=""><button class="letterButton btn btn-default" id="R">R</button></li>
+        <li class=""><button class="letterButton btn btn-default" id="S">S</button></li>
+        <li class=""><button class="letterButton btn btn-default" id="T">T</button></li>
+        <li class=""><button class="letterButton btn btn-default" id="U">U</button></li>
+        <li class=""><button class="letterButton btn btn-default" id="V">V</button></li>
+        <li class=""><button class="letterButton btn btn-default" id="W">W</button></li>
+        <li class=""><button class="letterButton btn btn-default" id="X">X</button></li>
+        <li class=""><button class="letterButton btn btn-default" id="Y">Y</button></li>
+        <li class=""><button class="letterButton btn btn-default" id="Z">Z</button></li>
+
+        
+      </ul>
+    </div>
+    <div>
+      <canvas id="canvas"></canvas>
+    </div>
+
+    <div id="wordDiv">
+
+
+    </div>
+
+    <div>
+      <h3 id="lives">You Have 10 Lives Left</h3>
+      <h3 id="category"></h3>
+      <h3 id="hint"></h3>
+      <h3 id="letterPickedDiv"></h3>
+      <h3 id="LetterWrongDiv"></h3>
+    </div>
+  </div>
+  <div>
+    <button id="playAgain">Play Again</button>
+
+    <button id="hintButton">Show Hint</button>
+  </div>
+
+
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script src="hangman.js"></script>
+</body>
+</html>
