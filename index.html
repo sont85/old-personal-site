@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Son Truong</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="animsition_javascriptplugin/animsition.min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.jpeg">
+    <link href='http://fonts.googleapis.com/css?family=Pacifico|Slabo+27px' rel='stylesheet' type='text/css'>
+    <style>
+      body {
+        padding-top: 80px;
+        background: #7FA2c9;
+        font-family: 'Slabo 27px', serif;
+        position: relative;
+      }
+      h3{
+        color: #80732E;
+        font-family: 'Pacifico', cursive;
+      }
+      h2 {
+        color: #80732E;
+        font-family: 'Pacifico', cursive;
+        transition: 1s;
+      }
+
+      h2:hover {
+        font-size: 4em;
+        text-shadow: 5px 5px 5px  #222;
+      }
+      .navbar-default {
+        background-color: #A5c1e8;
+      }
+      .navbar-default:hover {
+        background-color: #25c1e8;
+      }
+      .project {
+        box-shadow: 5px 5px 5px -3px #39453A;
+      }
+    </style>
+  </head>
+  <body data-spy="scroll" data-target="#navbar-spy">
+    <!-- navbar -->
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container animsition" data-animsition-in="fade-in">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="http://decoding.ghost.io/" class="navbar-brand">My Blog</a>
+        <a href="https://github.com/sont85"><i class="fa fa-github fa-2x navbar-brand hidden-xs" title="Github"></i></a>
+        <a href="https://www.linkedin.com/pub/son-truong/b8/888/427"><i class="fa fa-linkedin-square fa-2x navbar-brand hidden-xs" title="LinkedIn"></i></a>
+        <a href="https://twitter.com/Fade_2_bliss"><i class="fa fa-twitter fa-2x navbar-brand hidden-xs" title="Twitter"></i></a>
+
+        <!-- collapsable navbar -->
+        <div class="collapse navbar-collapse">
+          <div class="navbar-right"  id="navbar-spy">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#"><i class="fa fa-home"></i> Home</a></li>
+
+              <li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-link"></i> Links<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="https://github.com/sont85"><i class="fa fa-github"></i> Github</a></li>
+                  <li><a href="https://www.linkedin.com/pub/son-truong/b8/888/427"><i class="fa fa-linkedin-square"></i> Linkedin</a></li>
+                  <li><a href="https://twitter.com/Fade_2_bliss"><i class="fa fa-twitter"></i> Twitter</a></li>  
+                </ul>
+              </li>
+
+
+              <li><a href="#projects"><i class="fa fa-star"></i> Projects</a></li>
+              <li><a href="http://decoding.ghost.io/"><i class="fa fa-rss-square"></i> Blog</a></li>
+
+              <!-- email tooltip -->
+              <li id="email"  data-toggle="tooltip" data-placement="left" title="sont85@gmail.com">
+                <a href="mailto:sont85@gmail.com?subject=Inquiry">
+                  <i class="fa fa-info"></i> Email
+                </a>
+              </li>
+
+                <!-- dropdown menu  Links -->
+
+
+
+            </ul>
+          </div>
+        </div> <!-- end of collapse -->
+      </div>
+    </div><!-- end of navbar -->
+
+
+    <div class="container">
+
+    <!-- About Page -->
+      <div class="row animsition" data-animsition-in="fade-in-left-lg">
+        <div class="col-sm-8">
+          <h2 class="text-center page-header">Son Truong</h2>
+          <p class="lead">Full-stack developer in training, currently enrolled at Coding House Bootcamp studying how to program. "Live, Eat, Code." Learning the many languages and framework such as HTML, CSS, Javascript, Ruby, Jquery, and Bootstrap. Below is some of the projects that have completed or currently still working on. Also, check out my blog.</p>
+
+        </div>
+        <div class="col-sm-4 block center">
+          <img class="img-responsive center-block" src="http://s9.favim.com/610/131101/awesome-pictures-funny-funny-animals-funny-conversations-Favim.com-1028758.jpg">
+          <a class="btn btn-primary btn-lg btn-block" href="#contact" ><span class="glyphicon glyphicon-envelope"></span> Contact Me</a>
+          <a class="btn btn-info btn-lg btn-block" href="#"><span class="glyphicon glyphicon-education"></span> Resume</a>
+        </div>
+      </div>
+
+      <!-- Projects -->
+      <div class="container animsition" id="projects">
+        <h2 class="text-center page-header">Projects</h2>
+        <div class="row">
+
+          <div class="col-sm-4 project">
+            <a href="bootstrap/bootstrap.html" class="animsition-link">
+              <img class="img-responsive center-block img-rounded" src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRNo1YdnQCc8Hxswl1XVice4C9Afuzyx32QFj2BgtumVTmr5VQudQ">
+            </a>
+            <h4 class="text-center">Bootstrap Site</h4>
+          </div>
+
+
+          <div class="col-sm-4 project animsition">
+            <a href="CodingHouse/widget_mockup.html" class="animsition-link">
+              <img class="img-responsive center-block img-rounded" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVafWTj7l9rAq8mDPerkpMGt-md34LwB_nohZ6-oqvIpD1fTZHKA">
+            </a>
+            <h4 class="text-center">Widget</h4>
+          </div>
+
+
+          <div class="col-sm-4 project animsition">
+            <a href="CodingHouse/Navbar_Mockup.html" class="animsition-link">
+              <img class="img-responsive center-block img-rounded" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStGrtjU0LKkviSd6MIxn0StxI9Eaxl_PfaZ_Wvbc-LabFvgj1P">
+            </a>
+            <h4 class="text-center">NavBar</h4>
+          </div>
+
+        </div> <!-- end of row -->
+
+
+
+
+
+        <div class="row">
+          <div class="col-sm-6">
+            <h3 class="text-center page-header">Blog</h3>
+            <div>
+              <h4><a href="http://decoding.ghost.io/welcome-to-ghost/">Career Start</a></h4>
+              <p class="text-muted">Son Truong   13 May 2015</p>
+              <p>Began my journey to become a computer programmer earlier this year in February. My decision to become a computer programmer happen just by chance when a stranger suggested...
+                <a href="http://decoding.ghost.io/welcome-to-ghost/">Read More</a>
+              </p>
+            </div>
+
+          </div>
+          <div class="col-sm-6">
+            <h3 class="text-center page-header">Social Media</h3>
+            <a class="twitter-timeline" href="https://twitter.com/Fade_2_bliss" data-widget-id="598594082529681408">Tweets by @Fade_2_bliss</a>
+          </div>
+        </div>
+
+
+
+
+
+    <!-- Contact Me -->
+        <div id="contact">
+          <h2 class="text-center page-header">Contact Me</h2>
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label class="control-label col-sm-2 col-sm-offset-1" for="name">Name</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" placeholder="Enter Full Name" id="name">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-2 col-sm-offset-1" for="email">Email Contact</label>
+              <div class="col-sm-6">
+                <input type="email" class="form-control" placeholder="Enter Email" id="email">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-2 col-sm-offset-1" for="phone" >Phone Number</label>
+              <div class="col-sm-6">
+                <input type="tel" class="form-control" placeholder="Phone Number" id="phone">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="site" class="control-label col-sm-2 col-sm-offset-1">Site</label>
+              <div class="col-sm-6">
+                <input type="url" class="form-control" placeholder="http://" id="site">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-2 control-label col-sm-offset-1">Comments</label>
+              <div class="col-sm-6">
+                <textarea class="form-control" rows="3" id="TextArea" placeholder="Leave a Comment"></textarea>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-success btn-lg center-block">Submit</button>
+          </form>
+        </div> <!-- end of contact -->
+
+      </div> <!--end of container -->
+    </div><!-- end of main div-->
+
+
+
+
+
+
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="animsition_javascriptplugin/jquery.animsition.min.js"></script>
+    <script>
+      $(document).ready(function () {
+
+        $(".animsition").animsition({
+          inClass : 'fade-in-right-lg',
+          outClass: 'fade-out-right-lg'
+        });
+
+        $("body").scrollspy({target: '#navbar-spy'});
+        $("#email").tooltip();
+
+
+      });
+
+    </script>
+
+  </body>
+</html>
