@@ -2,16 +2,14 @@ $(document).ready(function (){
 
 
 	//click button to change background and font color
-	$(".light").click(function(event){
-		$("body").css({"background-color": "#DED", "color": "#232"});
-		$(this).hide(300);
-		$(".dark").fadeIn(300);
-	});
-
-	$(".dark").click(function(event){
-		$("body").css({"background-color": "#232", "color": "#DED"});
-		$(this).hide(300);
-		$(".light").fadeIn(300);
+	$(".switch").click(function(){
+		if  ($("body").hasClass("dark")) {
+			$("body").removeClass("dark").addClass("light");
+		} else if ($("body").hasClass("light")) {
+			$("body").removeClass("light").addClass("dark");
+		} else {
+			$("body").addClass("light");
+		}
 	});
 
 

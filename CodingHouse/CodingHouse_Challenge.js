@@ -2,30 +2,20 @@ function superCounter(str) {
   words = str.split(" ");
   wordsCount = words.length;
   characterCount = str.length;
-  spaceCount = 0
-  for (var j = 0; j<str.length; j++) {
-      if (/\s/.test(str[j])) {
-        spaceCount +=1
-      }
-  }
-  count = 0;
+  spaceCount = wordsCount - 1
+  totalWordsLength = 0;
   for (var i = 0; i<words.length; i++) {
- 	count += words[i].length;
+ 	totalWordsLength += words[i].length;
   }
   
-  averageWordLength = count / wordsCount;
+  averageWordLength = totalWordsLength / wordsCount;
   return {wordsCount : wordsCount, characterCount : characterCount, spaceCount : spaceCount, averageWordLength : averageWordLength}
 }
 
 function swapCase(str) {
   var swapSentence = "";
   for (var i = 0; i<str.length; i++) {
-    if (str[i] == str[i].toUpperCase()) {
-      swapSentence += str[i].toLowerCase();
-    } else {
-      swapSentence += str[i].toUpperCase();
-    }
-  }
+     swapSentence += (str[i] === str[i].toUpperCase())?  str[i].toLowerCase(): str[i].toUpperCase();
   return swapSentence
 }
 
@@ -33,7 +23,7 @@ function palindromicMap(str) {
   words = str.split(" ");
   map = [];
   for (var i=0; i<words.length; i++) {
-    if (words[i] == words[i].split("").reverse().join("")) {
+    if (words[i] === words[i].split("").reverse().join("")) {
       map.push(true);
     } else {
       map.push(false);
@@ -91,25 +81,18 @@ function age(year, month, day) {
     var monthDiff = month - date.getMonth();
     var dayDiff = day - date.getDate();
     
-    if (yearDiff != 0) {
-    return yearDiff + " years, " + monthDiff + " months, " + dayDiff + " days";
+    if (yearDiff != 0 && monthDiff != 0) {
+      return Math.abs(yearDiff) + " years, " + Math.abs(monthDiff) + " months, " + dayDiff + " days";
     } else if (monthDiff != 0) {
-        return monthDiff + " months, " + dayDiff + " days";
-    } else {
-        return dayDiff + " days";
-    }
+      return Math.abs(dayDiff) + " days";
+    } 
 }
+age(2017, 11, 17)
+
 
 function charCode(ascii) {
-  var result = ""
-  for (var i= 0;i<ascii.length; i++) {
-      result += String.fromCharCode(ascii[i]);
-  }
-  return result;
- }
-var ascii =[73, 32, 115, 112, 101, 97, 107, 32, 105, 110, 32, 110, 117, 109, 98, 101, 114, 115]
-
-charCode(ascii);
+  return ascii.map(function(e){ return String.fromCharCode(e);}).join();
+}
 
 
 
