@@ -3,18 +3,32 @@
 <head>
   <title>Hangman</title>
   <meta charset="utf-8">
+  <link rel="stylesheet" href="../animsition_javascriptplugin/animsition.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="shortcut icon" href="favicon.jpeg">
   <style>
+  canvas {
+    border:dashed 2px #333;
+  }
+  body {
+    background:#1C9C75;
+  }
+  #title,
+  #lives,
+  .h2 {
+    font-family: cursive;
+    color: #151266;
+    padding-bottom: 8px;
+  }
+  .letter{
+    font-size: 1.7em;
+  }
   .hidden{
     display: none;
   }
   .correct {
     background-color: green;
-  }
-  @0webkit0keyframes blinker {
-    from {opacity: 1.0;}
-    to {opacity:0.0;}
   }
   .blink {
     background-color: black;
@@ -25,71 +39,114 @@
 
 <body>
   <div class="container">
+    <div class="navbar navbar-default">
+      <div class="animsition" data-animsition-in="fade-in">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="http://decoding.ghost.io/" class="navbar-brand">My Blog</a>
+        <a href="https://github.com/sont85"><i class="fa fa-github fa-2x navbar-brand hidden-xs" title="Github"></i></a>
+        <a href="https://www.linkedin.com/pub/son-truong/b8/888/427"><i class="fa fa-linkedin-square fa-2x navbar-brand hidden-xs" title="LinkedIn"></i></a>
+        <a href="https://twitter.com/Fade_2_bliss"><i class="fa fa-twitter fa-2x navbar-brand hidden-xs" title="Twitter"></i></a>
+
+        <!-- collapsable navbar -->
+        <div class="collapse navbar-collapse">
+          <div class="navbar-right"  id="navbar-spy">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="http://luckycode.org/"><i class="fa fa-home"></i> Home</a></li>
+
+              <li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-link"></i> Links<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="https://github.com/sont85"><i class="fa fa-github"></i> Github</a></li>
+                  <li><a href="https://www.linkedin.com/pub/son-truong/b8/888/427"><i class="fa fa-linkedin-square"></i> Linkedin</a></li>
+                  <li><a href="https://twitter.com/Fade_2_bliss"><i class="fa fa-twitter"></i> Twitter</a></li>  
+                </ul>
+              </li>
+
+              <!-- email tooltip -->
+              <li id="email"  data-toggle="tooltip" data-placement="left" title="sont85@gmail.com">
+                <a href="mailto:sont85@gmail.com?subject=Inquiry">
+                  <i class="fa fa-info"></i> Email
+                </a>
+              </li>
+
+            </ul>
+          </div>
+        </div> <!-- end of collapse -->
+      </div>
+    </div><!-- end of navbar -->
     <div>
-      <h3 id="winner" class="hidden">winner<h3>
-      <h3 id="loser" class="hidden">loser</h3>
+      <h1 class="page-header text-center" id="title">Hangman</h1>
     </div>
     <div>
-      <ul>
-
-        <li class=""><button class="letterButton btn btn-default" data-letter="A">A</button></li>
-        <li class=""><button class="letterButton btn btn-default" id="B">B</button></li>
-        <li class=""><button class="letterButton btn btn-default" id="C">C</button></li>
-        <li class=""><button class="letterButton btn btn-default" id="D">D</button></li>
-        <li class=""><button class="letterButton btn btn-default" id="E">E</button></li>
-        <li class=""><button class="letterButton btn btn-default" id="F">F</button></li>
-        <li class=""><button class="letterButton btn btn-default" id="G">G</button></li>
-        <li class=""><button class="letterButton btn btn-default" id="H">H</button></li>
-        <li class=""><button class="letterButton btn btn-default" id="I">I</button></li>
-        <li class=""><button class="letterButton btn btn-default" id="J">J</button></li>
-        <li class=""><button class="letterButton btn btn-default" id="K">K</button></li>
-        <li class=""><button class="letterButton btn btn-default" id="L">L</button></li>
-        <li class=""><button class="letterButton btn btn-default" id="M">M</button></li>
-        <li class=""><button class="letterButton btn btn-default" id="N">N</button></li>
-        <li class=""><button class="letterButton btn btn-default" id="O">O</button></li>
-        <li class=""><button class="letterButton btn btn-default" id="P">P</button></li>
-        <li class=""><button class="letterButton btn btn-default" id="Q">Q</button></li>
-        <li class=""><button class="letterButton btn btn-default" id="R">R</button></li>
-        <li class=""><button class="letterButton btn btn-default" id="S">S</button></li>
-        <li class=""><button class="letterButton btn btn-default" id="T">T</button></li>
-        <li class=""><button class="letterButton btn btn-default" id="U">U</button></li>
-        <li class=""><button class="letterButton btn btn-default" id="V">V</button></li>
-        <li class=""><button class="letterButton btn btn-default" id="W">W</button></li>
-        <li class=""><button class="letterButton btn btn-default" id="X">X</button></li>
-        <li class=""><button class="letterButton btn btn-default" id="Y">Y</button></li>
-        <li class=""><button class="letterButton btn btn-default" id="Z">Z</button></li>
-
-        
-      </ul>
+      <h3 id="winner" class="hidden text-center">You Won<h3>
+      <h3 id="loser" class="hidden text-center">You Lost</h3>
     </div>
-    <div>
-      <canvas id="canvas"></canvas>
-    </div>
+    <div clas="row ">
+      <div class="col-sm-6 animsition" data-animsition-in="fade-in-right-lg">
+        <ul>
+          <button class="letterButton btn btn-default">A</button>
+          <button class="letterButton btn btn-default">B</button>
+          <button class="letterButton btn btn-default">C</button>
+          <button class="letterButton btn btn-default">D</button>
+          <button class="letterButton btn btn-default">E</button>
+          <button class="letterButton btn btn-default">F</button>
+          <button class="letterButton btn btn-default">G</button>
+          <button class="letterButton btn btn-default">H</button>
+          <button class="letterButton btn btn-default">I</button>
+          <button class="letterButton btn btn-default">J</button>
+          <button class="letterButton btn btn-default">K</button>
+          <button class="letterButton btn btn-default">L</button>
+          <button class="letterButton btn btn-default">M</button>
+          <button class="letterButton btn btn-default">N</button>
+          <button class="letterButton btn btn-default">O</button>
+          <button class="letterButton btn btn-default">P</button>
+          <button class="letterButton btn btn-default">Q</button>
+          <button class="letterButton btn btn-default">R</button>
+          <button class="letterButton btn btn-default">S</button>
+          <button class="letterButton btn btn-default">T</button>
+          <button class="letterButton btn btn-default">U</button>
+          <button class="letterButton btn btn-default">V</button>
+          <button class="letterButton btn btn-default">W</button>
+          <button class="letterButton btn btn-default">X</button>
+          <button class="letterButton btn btn-default">Y</button>
+          <button class="letterButton btn btn-default">Z</button>
+        </ul>
+        <!--  Letter placeholder -->
+        <div class="text-center lead" id="wordDiv"></div>
+      </div>
+      <div class="col-sm-6 animsition" data-animsition-in="fade-in-left-lg">
+        <canvas id="canvas"></canvas>
+        <div>
+          <button id="playAgain" class="btn btn-success btn-lg">*Play Again</button>
+          <button id="hintButton" class="btn btn-info btn-lg">*Show Hint</button>
+        </div>
+      </div>
 
-    <div id="wordDiv">
+    
 
-
-    </div>
-
-    <div>
-      <h3 id="lives">You Have 10 Lives Left</h3>
-      <h3 id="category"></h3>
-      <h3 id="hint"></h3>
-      <h3 id="letterPickedDiv"></h3>
-      <h3 id="LetterWrongDiv"></h3>
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2 animsition" data-animsition-in="rotate-in-lg">
+          <ul class="list-unstyled">
+            <li><h1 id="lives">You Have 10 Lives</h1></li>
+            <li><span class="h2">Categories: </span><span class="lead" id="category"></span></li>
+            <li><span class="h2">Hints: </span><span class="lead" id="hint">click show hint</span></li>
+            <li><span class="h2">Picked Letters: </span><span class="lead" id="letterPickedDiv"></span></li>
+            <li><span class="h2">Wrong Letters: </span><span class="lead" id="LetterWrongDiv"></span></li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
-  <div>
-    <button id="playAgain">Play Again</button>
-
-    <button id="hintButton">Show Hint</button>
-  </div>
-
-
+  <audio id="loseAudio" src="losing.mp3" type="audio/mp3"></auidio>
+  <audio id="winAudio" src="winning.mp3" type="audio/mp3"></audio>
 
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script src="../animsition_javascriptplugin/jquery.animsition.min.js"></script>
   <script src="hangman.js"></script>
 </body>
 </html>
