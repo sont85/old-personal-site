@@ -220,6 +220,12 @@ function blink() {
 	});
 }
 
+function clickSound() {
+	var clickAudio = document.getElementById("clickAudio");
+	clickAudio.play();
+}
+
+
 function reset(){
 	lettersWrong = [];
 	lettersPicked = [];
@@ -287,6 +293,8 @@ $(document).ready(function(){
 	$("#playAgain").on("click", function(){
 		reset();
 		startGame();
+		clickSound();
+
 	});
 
 	window.addEventListener("keydown", function(event){
@@ -296,6 +304,7 @@ $(document).ready(function(){
 		lettersPicked.push(letterPressed);
 		compare(letterPressed, word, $letterButtonKey);
 		$letterButtonKey.addClass("disabled");
+		clickSound();
 	});
 
 	$(".letterButton").on("click", function (){
@@ -303,9 +312,13 @@ $(document).ready(function(){
 		lettersPicked.push(letterClicked);
 		compare(letterClicked, word,$(this));
 		$(this).addClass("disabled");
+		clickSound();
+
 	});
 	$("#hintButton").on("click", function(){
 		$("#hint").html(hint);
+		clickSound();
+		
 	});
 
 });
