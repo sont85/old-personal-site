@@ -222,6 +222,7 @@ function blink() {
 
 function clickSound() {
 	var clickAudio = document.getElementById("clickAudio");
+	clickAudio.currentTime=0;
 	clickAudio.play();
 }
 
@@ -318,7 +319,7 @@ $(document).ready(function(){
 	$("#hintButton").on("click", function(){
 		$("#hint").html(hint);
 		clickSound();
-		
+
 	});
 
 });
