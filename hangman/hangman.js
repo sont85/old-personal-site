@@ -301,7 +301,7 @@ $(document).ready(function(){
 	$(".letterButton").on("click", function (){
 		var letterClicked = $(this).html();
 		lettersPicked.push(letterClicked);
-		compare(letterClicked, word, this);
+		compare(letterClicked, word, $(this));
 		$(this).addClass("disabled");
 	});
 	$("#hintButton").on("click", function(){
