@@ -1,7 +1,6 @@
-
 var turnCount = 0;
-
 var activePlayer = "X"
+var win = false;
 
 
 function switchPlayer() {
@@ -15,14 +14,16 @@ function printXO(button) {
 }
 
 function displayWin() {
+	win = true;
 	$("#winnerText").html("Winner:  Player " + activePlayer)
+	$(".ticTacButton").addClass("disabled")
 }
+
 function displayTie(tie) {
-	if (tie) {
+	if (tie && !win) {
 		$("#winnerText").html("Draw Game")
 	}
 }
-
 
 function rowCheck() {
 	if ($("#box1").html() === activePlayer && $("#box2").html() === activePlayer && $("#box3").html() === activePlayer) {
@@ -30,16 +31,19 @@ function rowCheck() {
 	} else if ($("#box4").html() === activePlayer && $("#box5").html() === activePlayer && $("#box6").html() === activePlayer) {
 		displayWin();
 	} else if ($("#box7").html() === activePlayer && $("#box8").html() === activePlayer && $("#box9").html() === activePlayer) {
-		displayWin()
+		displayWin();
 	}
 }
 
 function columnCheck() {
 	if ($("#box1").html() === activePlayer && $("#box4").html() === activePlayer && $("#box7").html() === activePlayer) {
+		columnWin = true;
 		displayWin();
 	} else if ($("#box2").html() === activePlayer && $("#box5").html() === activePlayer && $("#box8").html() === activePlayer) {
+		columnWin = true;
 		displayWin();
 	} else if ($("#box3").html() === activePlayer && $("#box6").html() === activePlayer && $("#box9").html() === activePlayer) {
+		columnWin = true;
 		displayWin()
 	}
 }
