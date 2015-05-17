@@ -2,38 +2,48 @@ function superCounter(str) {
   words = str.split(" ");
   wordsCount = words.length;
   characterCount = str.length;
-  spaceCount = wordsCount - 1
-  totalWordsLength = 0;
+  spaceCount = 0
+  for (var j = 0; j<str.length; j++) {
+      if (/\s/.test(str[j])) {
+        spaceCount +=1
+      }
+  }
+  count = 0;
   for (var i = 0; i<words.length; i++) {
- 	totalWordsLength += words[i].length;
+ 	count += words[i].length;
   }
   
-  averageWordLength = totalWordsLength / wordsCount;
+  averageWordLength = count / wordsCount;
   return {wordsCount : wordsCount, characterCount : characterCount, spaceCount : spaceCount, averageWordLength : averageWordLength}
 }
 
 function swapCase(str) {
   var swapSentence = "";
   for (var i = 0; i<str.length; i++) {
-     swapSentence += (str[i] === str[i].toUpperCase())?  str[i].toLowerCase(): str[i].toUpperCase();
+    if (str[i] == str[i].toUpperCase()) {
+      swapSentence += str[i].toLowerCase();
+    } else {
+      swapSentence += str[i].toUpperCase();
+    }
+  }
   return swapSentence
 }
 
 function palindromicMap(str) {
   words = str.split(" ");
-  words = words.map( function(word) {
-    return (word === word.split("").reverse().join(""))? true : false;
-  });
-  console.log(words)
-}
-palindromicMap("stash and pop on this level")
-
-function arrayAnalyzer() {
-  numbersArray=[];
-  for (var j=0; j<arguments.length; j++) {
-    numbersArray.push(arguments[j]);
+  map = [];
+  for (var i=0; i<words.length; i++) {
+    if (words[i] == words[i].split("").reverse().join("")) {
+      map.push(true);
+    } else {
+      map.push(false);
+    }
   }
-  numbersArray.sort(function(a,b){return a-b});
+  return map;
+}
+
+function arrayAnalyzer(num1,num2,num3,num4,num5,num6,num7) {
+  numbersArray = [num1,num2,num3,num4,num5,num6,num7].sort(function(a,b){return a-b});
   oddCount = 0;
   negativeCount = 0;
   total = 0
@@ -63,7 +73,6 @@ function arrayAnalyzer() {
   return { odds: oddCount, negatives: negativeCount, avg: average, median: median }
 }
 
-arrayAnalyzer(7, -3, 0, 12, 44, -5, 3);
 
 
 function wordsReverser(str) {
@@ -82,18 +91,25 @@ function age(year, month, day) {
     var monthDiff = month - date.getMonth();
     var dayDiff = day - date.getDate();
     
-    if (yearDiff != 0 && monthDiff != 0) {
-      return Math.abs(yearDiff) + " years, " + Math.abs(monthDiff) + " months, " + dayDiff + " days";
+    if (yearDiff != 0) {
+    return yearDiff + " years, " + monthDiff + " months, " + dayDiff + " days";
     } else if (monthDiff != 0) {
-      return Math.abs(dayDiff) + " days";
-    } 
+        return monthDiff + " months, " + dayDiff + " days";
+    } else {
+        return dayDiff + " days";
+    }
 }
-age(2017, 11, 17)
-
 
 function charCode(ascii) {
-  return ascii.map(function(e){ return String.fromCharCode(e);}).join();
-}
+  var result = ""
+  for (var i= 0;i<ascii.length; i++) {
+      result += String.fromCharCode(ascii[i]);
+  }
+  return result;
+ }
+var ascii =[73, 32, 115, 112, 101, 97, 107, 32, 105, 110, 32, 110, 117, 109, 98, 101, 114, 115]
+
+charCode(ascii);
 
 
 
