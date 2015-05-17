@@ -33,6 +33,10 @@
   .blink {
     background-color: black;
   }
+  .zIndex {
+    z-index: 2;
+    position: fixed;
+  }
 
   </style>
 </head>
@@ -83,6 +87,7 @@
     <div>
       <h3 id="winner" class="hidden text-center">You Won<h3>
       <h3 id="loser" class="hidden text-center">You Lost</h3>
+
     </div>
     <div clas="row ">
       <div class="col-sm-6 animsition" data-animsition-in="fade-in-right-lg">
@@ -125,11 +130,13 @@
         </div>
       </div>
 
-    
-
       <div class="row">
         <div class="col-sm-8 col-sm-offset-2 animsition" data-animsition-in="rotate-in-lg">
+          <div class="zIndex hidden hidden-xs" id="winnerImage">
+            <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSdiIOGlQYKJzGH-4ypDAxiKyHVSh6U9f8cDeMGm2zaBVeZfNhs" class="block-center">
+          </div>
           <ul class="list-unstyled">
+
             <li><h1 id="lives">You Have 10 Lives</h1></li>
             <li><span class="h2">Categories: </span><span class="lead" id="category"></span></li>
             <li><span class="h2">Hints: </span><span class="lead" id="hint">click show hint</span></li>
@@ -144,10 +151,10 @@
   <audio id="winAudio" src="winning.mp3" type="audio/mp3"></audio>
   <audio id="clickAudio" src="clickSound.mp3" type="audio/mp3"></audio>
 
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
   <script src="../animsition_javascriptplugin/jquery.animsition.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
   <script src="hangman.js"></script>
 </body>
 </html>

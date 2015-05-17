@@ -72,7 +72,7 @@ var words = [
 					{"LEMON" : "Citric Fruit"}]},
 
 				{"TRAVEL":
-					[{"RAILROAD" : "Wealthy Nation"},
+					[{"RAILROAD" : "Tracks"},
 					{"HELICOPTER": "Rotary Blade"},
 					{"YACHT": "Private Boat"},
 					{"AUTOMOBILE" : "Street Vehicle"},
@@ -120,9 +120,6 @@ var words = [
 					{"SKELETON": "Provide Structural Support"},
 					{"MUSCLES": "Produce Movement"},
 					{"LARYNX": "Hold Vocal Cord"}]},
-
-
-
 															];
 
 
@@ -196,12 +193,29 @@ function myCanvas() {
 	strokeCount +=1;
 }
 
+function animation(winLose) {
+	TweenMax.to(winLose, 2, {width:300});
+	TweenMax.to(winLose, 2, {backgroundColor:"#A8B"});
+	TweenMax.to(winLose, 2, {width:600 , delay: 2});
+	TweenMax.to(winLose, 2, {backgroundColor:"#4F9", delay: 2});
+	TweenMax.to(winLose, 6, {x: 600, rotation: 360, scale:0.5, delay:4, ease:Bounce.easeOut});
+	TweenMax.to(winLose, 6, {x: 0, rotation: 360, scale:1, delay:8});
+
+	TweenMax.to($("#winnerImage"), 1, {opacity:0,scale:0, ease:Bounce.easeOut})
+	TweenMax.to($("#winnerImage"), 3, {right: 200})
+	TweenMax.to($("#winnerImage"), 3, {left: 200, delay: 3})
+
+
+}
+
 function winCheck() {
 	if (word.length === amountCorrect) {
 		$("#winner").removeClass("hidden");
 		$(".letterButton").addClass("disabled");
 		var winAudio = document.getElementById("winAudio");
 		winAudio.play();
+		animation($("#winner"));
+		$("#winnerImage").removeClass("hidden");
 	}
 }
 
@@ -211,6 +225,7 @@ function loseCheck() {
 		$(".letterButton").addClass("disabled");
 		var loseAudio = document.getElementById("loseAudio");
 		loseAudio.play();
+		animation($("#loser"));
 	}
 }
 
@@ -236,13 +251,13 @@ function reset(){
 	amountCorrect = 0
 	letterKey = ""
 	word = ""
+	$("#winnerImage").addClass("hidden")
 	canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
-	var reset = "";
 	$("#winner").addClass("hidden");
 	$("#loser").addClass("hidden");
 	$("#lives").html("You Have 10 Lives");
-	$("#letterPickedDiv").html(reset);
-	$("#LetterWrongDiv").html(reset);
+	$("#letterPickedDiv").html("");
+	$("#LetterWrongDiv").html("");
 	$("#hint").html("click show hint");
 	$(".letterButton").removeClass("disabled");
 }
