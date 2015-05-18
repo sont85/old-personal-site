@@ -37,13 +37,10 @@ function rowCheck() {
 
 function columnCheck() {
 	if ($("#box1").html() === activePlayer && $("#box4").html() === activePlayer && $("#box7").html() === activePlayer) {
-		columnWin = true;
 		displayWin();
 	} else if ($("#box2").html() === activePlayer && $("#box5").html() === activePlayer && $("#box8").html() === activePlayer) {
-		columnWin = true;
 		displayWin();
 	} else if ($("#box3").html() === activePlayer && $("#box6").html() === activePlayer && $("#box9").html() === activePlayer) {
-		columnWin = true;
 		displayWin()
 	}
 }
@@ -75,7 +72,8 @@ function reset() {
 	turnCount = 0;
 	$(".ticTacButton").html("");
 	$(".ticTacButton").removeClass("disabled");
-	$(".winnerText").html("")
+	$("#winnerText").html("")
+	win = false
 }
 
 function clickAudio() {
