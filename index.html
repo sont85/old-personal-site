@@ -46,14 +46,18 @@
       }
 
       .language {
-        background-color: #A5c1e8 ;
         padding: 10px 10px;
         margin-right: 5px;
-        margin-bottom: 10px;
-        line-height: 50px
-
-
+        line-height: 50px;
+        transition-timing-function: ease-out;
+        transition: 2s;
         }
+      .language:hover {
+        transform: rotate(1080deg) skewY(30deg);
+        opacity: .5;
+      }
+
+
     </style>
   </head>
   <body data-spy="scroll" data-target="#navbar-spy">
@@ -112,14 +116,14 @@
       <div class="row animsition" data-animsition-in="fade-in-left-lg">
         <div class="col-sm-8">
           <h2 class="text-center page-header">Son Truong</h2>
-          <h4 class="lead text-center">Full-stack developer</h4>
+          <p class="lead text-center h3">Full-stack developer</p>
           <div class="languageDiv">
-            <span class="language lead">HTML5</span>
-            <span class="language lead">CSS3</span>
-            <span class="language lead">Javascript</span>
-            <span class="language lead">JQUERY</span>
-            <span class="language lead">Bootstrap</span>
-            <span class="language lead">And more...</span>
+            <button class="language lead bg-success">HTML5</button>
+            <button class="language lead bg-primary">CSS3</button>
+            <button class="language lead bg-info">Javascript</button>
+            <button class="language lead bg-warning">JQUERY</button>
+            <button class="language lead bg-danger">Bootstrap</button>
+            <button class="language lead bg-success">And more...</button>
           </div>
           <h5>"Live, Eat, Code."</h5>
 
@@ -182,6 +186,15 @@
             </a>
             <h4 class="text-center">TicTacToe</h4>
           </div>
+
+          <div class="col-sm-4 project animsition">
+            <a href="calculator/index.html" class="animsition-link">
+              <img class="img-responsive center-block img-rounded" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRfbiR831wbiPRYjGN0HY57UVyl0wV-Wk1SEKySTWCTew4J4G8u">
+            </a>
+            <h4 class="text-center">Calculator</h4>
+          </div>
+
+        </div> <!-- end of row -->
 
 
         </div> <!-- end of row -->
