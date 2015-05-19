@@ -5,16 +5,16 @@ var addLast = false;
 var	subtractLast = false;
 var	multiplyLast = false;
 var	divideLast = false;
-var numberLast= false
-var equalLast = false
+var numberLast= false;
+var equalLast = false;
 
 function reset() {
 	addLast = false;
 	subtractLast = false;
 	multiplyLast = false;
 	divideLast = false;
-	numberLast = false
-	equalLast = false
+	numberLast = false;
+	equalLast = false;
 	enterValue = ""
 }
 
@@ -42,6 +42,17 @@ function addClick() {
 	}
 }
 
+function addEvent(value) {
+	if (operatorCount >= 1){    //total value equal enterValue on first operator
+		totalValue = totalValue + parseFloat(value);
+	} else if (operatorCount < 1){
+		totalValue = parseFloat(value)
+	}
+	displayAnswer(totalValue);
+	reset();
+	addLast = true;  // set addLast as true so equal button would add with the last number
+}
+
 function subtractClick() {
 	enterValue = $("#answerDisplay").text();
 	if ((enterValue && numberLast) || (enterValue && equalLast)) {
@@ -52,6 +63,20 @@ function subtractClick() {
 		enterValue = ""
 	}
 }
+
+
+function subtractEvent(value) {
+	if (operatorCount >=1){ 
+		totalValue = totalValue - parseFloat(value);
+	} else if (operatorCount < 1){
+		totalValue = parseFloat(value)
+	}
+	displayAnswer(totalValue);
+	reset();
+	subtractLast = true;
+}
+
+
 function multiplyClick() {
 	enterValue = $("#answerDisplay").text();
 	if ((enterValue && numberLast) || (enterValue && equalLast)) {
@@ -63,6 +88,18 @@ function multiplyClick() {
 	}
 }
 
+
+function multiplyEvent(value) {
+	if (operatorCount >=1){
+		totalValue = totalValue * parseFloat(value);
+	} else if (operatorCount < 1){
+		totalValue = parseFloat(value)
+	}
+	decimalCheck();  // check for decimal and display
+	reset();
+	multiplyLast = true;
+}
+
 function divideClick() {
 	enterValue = $("#answerDisplay").text();
 	if ((enterValue && numberLast) || (enterValue && equalLast)) {
@@ -72,6 +109,17 @@ function divideClick() {
 		$("#answerDisplay").text("");
 		enterValue = ""
 	}
+}
+
+function divideEvent(value) {
+	if (operatorCount >=1){
+		totalValue = totalValue / parseFloat(value);
+	} else if (operatorCount < 1){
+		totalValue = parseFloat(value)
+	}
+	decimalCheck();  //check for decimal and display
+	reset();
+	divideLast = true;
 }
 
 function equalClick() {
@@ -91,50 +139,6 @@ function equalClick() {
 	operatorCount = 0
 }
 
-
-function addEvent(value) {
-	if (operatorCount >= 1){    //total value equal enterValue on first operator
-		totalValue = totalValue + parseFloat(value);
-	} else if (operatorCount < 1){
-		totalValue = parseFloat(value)
-	}
-	displayAnswer(totalValue);
-	reset();
-	addLast = true;  // set addLast as true so equal button would add with the last number
-}
-
-function subtractEvent(value) {
-	if (operatorCount >=1){ 
-		totalValue = totalValue - parseFloat(value);
-	} else if (operatorCount < 1){
-		totalValue = parseFloat(value)
-	}
-	displayAnswer(totalValue);
-	reset();
-	subtractLast = true;
-}
-
-function multiplyEvent(value) {
-	if (operatorCount >=1){
-		totalValue = totalValue * parseFloat(value);
-	} else if (operatorCount < 1){
-		totalValue = parseFloat(value)
-	}
-	decimalCheck();  // check for decimal and display
-	reset();
-	multiplyLast = true;
-}
-
-function divideEvent(value) {
-	if (operatorCount >=1){
-		totalValue = totalValue / parseFloat(value);
-	} else if (operatorCount < 1){
-		totalValue = parseFloat(value)
-	}
-	decimalCheck();  //check for decimal and display
-	reset();
-	divideLast = true;
-}
 function deleteEvent(value) {
 	enterValue = $("#answerDisplay").text();
 	enterValue = enterValue.substring(0, enterValue.length - 1); //delete last character on string
@@ -159,7 +163,7 @@ function plusMinusEvent() {
 }
 
 $(document).ready(function() {
-  	$(".animsition").animsition();
+	$(".animsition").animsition();
 
 	$(".numbers").click(function () { //entering numbers in as string
 		enterValue += $(this).text();
@@ -188,7 +192,7 @@ $(document).ready(function() {
 		totalValue = 0;
 		operatorCount = 0;
 		reset();
-		$("#answerDisplay").text("");
+		$("#answerDisplay").text("0");
 	});
 
 	$("#addButton").click(function () {
@@ -213,9 +217,9 @@ $(document).ready(function() {
 
 	//keyboard events
 	window.addEventListener("keydown", function (event) { 
-		console.log(event.which)
-		if (event.which >=48 && event.which <= 57) { //number keys
-			enterValue += String.fromCharCode(event.which);
+		var ascii = (event.which >=96 && event.which <= 105)? event.keyCode - 48 : event.keyCode //change numpad keycode to regular num keycode
+		if ((event.which >=48 && event.which <= 57) || (event.which >=96 && event.which <= 105)) { //number keys
+			enterValue += String.fromCharCode(ascii);
 			numberLast = true;
 			displayAnswer(enterValue);
 
@@ -242,6 +246,7 @@ $(document).ready(function() {
 			divideClick();
 
 		} else if (event.which === 13) { //enter key
+			event.preventDefault();
 			equalClick();
 		}
 
