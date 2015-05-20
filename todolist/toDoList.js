@@ -18,6 +18,14 @@ $(document).ready(function() {
 		createToDoList(itemText);
 	});
 
+	$("#addText").on("keydown", function (event) {
+		if (event.which === 13) {                  //press enter keycode
+			var itemText = $("#addText").val();
+			$("#addText").val("")
+			createToDoList(itemText);
+		}
+	})
+
 	$("#toDoSection").on("change", ".toDoCheckBox", function () {
 		var itemText = ($(this).closest(".input-group").find(".toDoText").val());
 		$(this).closest(".input-group").detach();
