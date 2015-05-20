@@ -7,6 +7,8 @@ var	multiplyLast = false;
 var	divideLast = false;
 var numberLast= false;
 var equalLast = false;
+var clickAudio = document.getElementById("clickAudio");
+
 
 function reset() {
 	addLast = false;
@@ -136,7 +138,7 @@ function equalClick() {
 	}
 	reset();
 	equalLast = true;
-	operatorCount = 0
+	operatorCount = 0;
 }
 
 function deleteEvent(value) {
@@ -164,6 +166,11 @@ function plusMinusEvent() {
 
 $(document).ready(function() {
 	$(".animsition").animsition();
+
+	$(".btn").click(function() {
+		clickAudio.currentTime = 0;
+		clickAudio.play();
+	});
 
 	$(".numbers").click(function () { //entering numbers in as string
 		enterValue += $(this).text();
@@ -217,6 +224,10 @@ $(document).ready(function() {
 
 	//keyboard events
 	window.addEventListener("keydown", function (event) { 
+		
+		clickAudio.currentTime = 0;
+		clickAudio.play();
+
 		var ascii = (event.which >=96 && event.which <= 105)? event.keyCode - 48 : event.keyCode //change numpad keycode to regular num keycode
 		if ((event.which >=48 && event.which <= 57) || (event.which >=96 && event.which <= 105)) { //number keys
 			enterValue += String.fromCharCode(ascii);
