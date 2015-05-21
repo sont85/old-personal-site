@@ -17,10 +17,11 @@
   .card{
     border: 2px solid black;
     padding: 70px 10px;
-    min-width: 110px;
+    min-width: 100px;
     background: radial-gradient(#66A3c2, #94bfd4);
     display: inline-block;
     word-wrap:break-word;
+    margin-right: 8px;
 
   }
   #dealerPoint,
@@ -40,6 +41,8 @@
     border: 2px solid black;
     display: inline-block;
     padding: 10px;
+    background: #222;
+    color: #Eee;
   }
 
   .btn {
@@ -90,10 +93,16 @@
       </div>
     </div><!-- end of navbar -->
     <h2 class="page-header text-center">BlackJack</h3>
-    <h3 class="lead text-center" id="outcome"></h3>
     <div class="row">
-      <div class="col-sm-6 col-sm-offset-3">
-        <div class="lead" style="display:inline-block">Score</div>
+      <div class="col-sm-3">
+        <h3 class="text-center" id="outcome"></h3>
+        <h4 class="text-center hidden" id="blackjack">$$ BLACK JACK $$</h4>
+        <h4 class="text-center hidden" id="bust">PLAYER BUST</h4>
+
+      </div>
+
+      <div class="col-sm-6">
+        <div class="lead hidden-xs" style="display:inline-block">Score</div>
         <div class="scoreBoard">
           <span>Player: </span>
           <span id="playerScore">0</span>

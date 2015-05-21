@@ -51,6 +51,8 @@ function reset() {
 	$("#outcome").text("")
 	$("#playerPoint").text("")
 	$("#dealerPoint").text("")
+	$("#blackjack").addClass("hidden")
+	$("#bust").addClass("hidden")
 }
 
 
@@ -77,7 +79,7 @@ function drawingCard(drawer) {
 	if (drawer === "player") {
 		playerPoint = calculatePoints(playerHand);
 		if (playerPoint > 21) {
-			$("#outcome").text("$$$$$ PLAYER BUST $$$$$");
+			$("#bust").removeClass("hidden");
 			$("#hitButton").addClass("disabled");
 		}
 	}
@@ -173,6 +175,7 @@ function startGame() {
 	drawingCard("player");
 	if (blackJackCheck(playerHand) === true) { //check if player won blackjack
 		$("#hitButton").addClass("disabled")
+		$("#blackjack").removeClass("hidden");
 	}
 }
 
