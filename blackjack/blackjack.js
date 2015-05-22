@@ -206,15 +206,17 @@ $(document).ready(function() {
 		var dealerBlackJack = blackJackCheck(dealerHand)
 
 		//check for dealer black jack
-		if (playerBlackJack && dealerBlackJack) {
-			winner("draw")
-		} else if (playerBlackJack) {
-			winner("player")
-		} else if (dealerBlackJack) {
-			winner("dealer")
-		} else {
-			checkDealerHand()
-			winCheck();
+		if (roundOver === false) {
+			if (playerBlackJack && dealerBlackJack) {
+				winner("draw")
+			} else if (playerBlackJack) {
+				winner("player")
+			} else if (dealerBlackJack) {
+				winner("dealer")
+			} else {
+				checkDealerHand()
+				winCheck();
+			}
 		}
 		roundOver = true
 		
