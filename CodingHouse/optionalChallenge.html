@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Challenge</title>
+</head>
+<body>
+
+	<div>
+		<textarea id="text"></textarea>
+		<button id="submitButton">submit</button>
+		<table id="table"></table>
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>">
+	<script>
+
+	function assert_equal(result, answer) {
+		console.log(result === answer)
+	};
+
+	//Challenge 1
+	String.prototype.binaryToDecimal = function () {
+	  	var binary = this.match(/\d/gi).join("")
+		var decimal= 0;
+		for (var i = 1; i < binary.length + 1 ; i++) {
+	  		subtotal = (binary[binary.length - i] === "1")? 1 : 0;
+			var j = 1
+			while (j < i) {
+				subtotal *= 2
+				j++
+			};
+		decimal += subtotal
+		};
+		return decimal
+	}
+
+	assert_equal("11001010".binaryToDecimal(), 202);
+	assert_equal("1110".binaryToDecimal(), 14);
+
+	//challenge 2
+	function decodeStr(string) {
+		var array = string.match(/\w+(?=|)/g)
+		var answer = ""
+		for (var i=1; i<array.length; i++) {
+			answer += array[0][array[i]];
+		}
+		return answer
+	}
+
+	assert_equal(decodeStr("sfGuisOthO12D|2 6 9 12"), "GOOD");
+	assert_equal(decodeStr("01R34E6D|2 5 7"), "RED");
+
+
+
+	$(document).ready(function () {
+
+		//challenge 3
+		$("#submitButton").click(function () {
+			var words = $("#text").val().split(" ");
+			var wordList = {}
+			var topWords = []
+			for (var i = 0; i<words.length; i++) {
+				var word = words[i];
+				wordList[word] = wordList[word] | 0
+				wordList[word]++
+			}
+
+			for (word in wordList) {
+				topWords.push(word)
+				topWords = topWords.sort(function (a,b) {
+					return wordList[b] - wordList[a]
+				});
+			}
+
+			$("#table").empty()
+			topWords.forEach(function(word) {
+				var tableHTML = "<tr><td>"+word+"</td><td>"+wordList[word]+"</td></tr>"
+				$("#table").append(tableHTML);
+			});
+		})
+
+		//challenge 4
+		$.getJSON("https://api.github.com/users?format=json", function(data){
+			var userCount = 0;
+			var OrganizationCount = 0;
+			var adminCount = 0;
+			var handleCount = 0;
+			data.forEach(function (item){
+				if (item.type === "User") {
+					userCount +=1
+				} else if (item.type === "Organization") {
+					OrganizationCount +=1
+				}
+				adminCount += (item.site_admin === true)? 1: 0;
+				handleCount += (item.login.length <= 5)? 1:0;
+			});
+			console.log(userCount);
+			console.log(OrganizationCount);
+			console.log(adminCount);
+			console.log(handleCount);
+		});
+
+	})
+
+
+	
+
+
+  </script>
+</body>
+</html>
