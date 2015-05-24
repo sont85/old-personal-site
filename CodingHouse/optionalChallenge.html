@@ -94,7 +94,7 @@
 				} else if (item.type === "Organization") {
 					OrganizationCount +=1
 				}
-				adminCount += (item.site_admin === true)? 1: 0;
+				adminCount += (item.site_admin)? 1: 0;
 				handleCount += (item.login.length <= 5)? 1:0;
 			});
 			console.log(userCount);
