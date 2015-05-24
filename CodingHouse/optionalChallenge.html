@@ -22,18 +22,13 @@
 
 	//Challenge 1
 	String.prototype.binaryToDecimal = function () {
-	  	var binary = this.match(/\d/gi).join("")
-		var decimal= 0;
-		for (var i = 1; i < binary.length + 1 ; i++) {
-	  		subtotal = (binary[binary.length - i] === "1")? 1 : 0;
-			var j = 1
-			while (j < i) {
-				subtotal *= 2
-				j++
-			};
-		decimal += subtotal
-		};
-		return decimal
+	  	var binary = this.match(/\d/gi).reverse();
+	  	var decimal = 0
+	  	for (var i=0;i<binary.length; i++) {
+	  		 decimal += binary[i] * Math.pow(2, i)
+	  	}
+	  	console.log(decimal)
+	  	return decimal
 	}
 
 	assert_equal("11001010".binaryToDecimal(), 202);
@@ -52,7 +47,7 @@
 	assert_equal(decodeStr("sfGuisOthO12D|2 6 9 12"), "GOOD");
 	assert_equal(decodeStr("01R34E6D|2 5 7"), "RED");
 
-
+	
 
 	$(document).ready(function () {
 
