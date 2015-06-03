@@ -1,3 +1,4 @@
+//challenge 4
 function superCounter(str) {
   words = str.split(" ");
   wordsCount = words.length;
@@ -17,6 +18,8 @@ function superCounter(str) {
   return {wordsCount : wordsCount, characterCount : characterCount, spaceCount : spaceCount, averageWordLength : averageWordLength}
 }
 
+
+//challenge 5
 function swapCase(str) {
   var swapSentence = "";
   for (var i = 0; i<str.length; i++) {
@@ -29,6 +32,7 @@ function swapCase(str) {
   return swapSentence
 }
 
+//challenge 9
 function palindromicMap(str) {
   words = str.split(" ");
   map = [];
@@ -42,6 +46,18 @@ function palindromicMap(str) {
   return map;
 }
 
+//challenge 10
+function wordsReverser(str) {
+  return str.split(/\b/).map(function (word) {
+    if (/\w/.test(word)) {
+      return word.split("").reverse().join("");
+    } else {
+        return word
+    }
+  }).join("");
+}
+
+//challenge 11
 function arrayAnalyzer(num1,num2,num3,num4,num5,num6,num7) {
   numbersArray = [num1,num2,num3,num4,num5,num6,num7].sort(function(a,b){return a-b});
   oddCount = 0;
@@ -74,17 +90,7 @@ function arrayAnalyzer(num1,num2,num3,num4,num5,num6,num7) {
 }
 
 
-
-function wordsReverser(str) {
-  return str.split(/\b/).map(function (word) {
-    if (/\w/.test(word)) {
-      return word.split("").reverse().join("");
-    } else {
-        return word
-    }
-  }).join("");
-}
-
+//challenge 12
 function age(year, month, day) {
   var date = new Date();
   var yearDiff = year - date.getFullYear()
@@ -100,20 +106,8 @@ function age(year, month, day) {
     }
 }
 
-function charCode(ascii) {
-  var result = ""
-  for (var i= 0;i<ascii.length; i++) {
-      result += String.fromCharCode(ascii[i]);
-  }
-  return result;
- }
-var ascii =[73, 32, 115, 112, 101, 97, 107, 32, 105, 110, 32, 110, 117, 109, 98, 101, 114, 115]
 
-charCode(ascii);
-
-
-
-
+//challenge 14
 function wordSelector(str) {
   var words = str.split(" ");
   var highest = 0;
@@ -136,3 +130,15 @@ function wordSelector(str) {
   });
   return answer
 }
+
+//challenge 15
+function charCode(ascii) {
+  var result = ""
+  for (var i= 0;i<ascii.length; i++) {
+      result += String.fromCharCode(ascii[i]);
+  }
+  return result;
+ }
+var ascii =[73, 32, 115, 112, 101, 97, 107, 32, 105, 110, 32, 110, 117, 109, 98, 101, 114, 115]
+
+charCode(ascii);

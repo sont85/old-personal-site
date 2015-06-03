@@ -20,7 +20,9 @@
 		console.log(result === answer)
 	};
 
-	//Challenge 1
+
+
+	///Challenge 1
 	String.prototype.binaryToDecimal = function () {
 	  	var binary = this.match(/\d/gi).reverse();
 	  	var decimal = 0
@@ -33,6 +35,10 @@
 
 	assert_equal("11001010".binaryToDecimal(), 202);
 	assert_equal("1110".binaryToDecimal(), 14);
+
+
+
+
 
 	//challenge 2
 	function decodeStr(string) {
@@ -51,8 +57,9 @@
 
 	$(document).ready(function () {
 
-		//function for 10,000 words optional challenge and challenge #3
-		function wordFrequency(words, printAmount) {
+		//challenge 3
+		$("#submitButton").click(function () {
+			var words = $("#text").val().split(" ");
 			var wordList = {}
 			var topWords = []
 			for (var i = 0; i<words.length; i++) {
@@ -69,18 +76,14 @@
 			}
 
 			$("#table").empty()
-			for (var i =0; i<printAmount; i++) {
+			for (var i =0; i<10; i++) {
 				var tableHTML = "<tr><td>"+topWords[i]+"</td><td>"+wordList[topWords[i]]+"</td></tr>"
 				$("#table").append(tableHTML);
 			};
-		}
+		});
 
 
-		//challenge 3
-		$("#submitButton").click(function () {
-			var words = $("#text").val().split(" ");
-			wordFrequency(words, 10)
-		})
+
 
 		//challenge 4
 		$.getJSON("https://api.github.com/users?format=json", function(data){
@@ -101,22 +104,6 @@
 			console.log(OrganizationCount);
 			console.log(adminCount);
 			console.log(handleCount);
-		});
-
-
-		//10,000 words optional challenge
-			var reader = new FileReader();
-			var textdisplay = $("#text")
-
-		$("#inputFile").on("change", function() {
-			reader.onload = function() {
-				textdisplay.val(reader.result)
-				text = reader.result
-				var words = (text.match(/[|] (.+)/gi))
-				wordFrequency(words, 20)
-			}
-			reader.readAsText($("#inputFile").get(0).files[0], "utf-8")
-
 		});
 
 	})

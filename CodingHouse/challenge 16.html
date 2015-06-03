@@ -1,0 +1,143 @@
+<!Doctype html>
+<html>
+<head>
+	<title>CodingHouse | Son Truong</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="shortcut icon" href="../favicon.jpeg">
+	<style>
+	body {
+		background-color: #47b2b2;
+	}
+	h4 {
+		color:#fff;
+	}
+	form {
+		background-color: #eee;
+	}
+	.widget-content {
+		padding: 10px;
+	}
+	.btn {
+		clear: both;
+	}
+	#btn {
+		margin-right: 5px;
+		margin-left: 5px;
+	}
+	
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+
+
+			<div class="col-sm-4">
+				<h4 class="text-center">Assorted Vegetables (1lb)</h4>
+				<form class="form">
+					
+					<img class="img-responsive center-block" src="http://healthyhoosiers.files.wordpress.com/2011/07/vegetables.jpg?w=660">
+					<div class="widget-content">
+						<span>$</span>
+						<span class="price" id="vegetable-price">1.00</span>
+						<span class="total"></span>
+						<div class="pull-right" >
+							<label for="quantity" class="text-muted">QTY: </label>
+							<input type="number" min="1" max="25" class="quantity" value="1">
+						</div>
+						<a class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#login-modal"><b class="glyphicon glyphicon-shopping-cart"></b> ADD TO CART</a>
+					</div>
+				</form>
+			</div>
+
+
+			<div class="col-sm-4">
+				<h4 class="text-center">Raspberries (1lb)</h4>
+				<form class="form">
+					<img class="img-responsive center-block" src="http://thumbs.dreamstime.com/x/raspberries-5673803.jpg">
+					<div class="widget-content">
+						<span>$</span>
+						<span class="price">2.50</span>
+						<span class="total"></span>
+						<div class="pull-right">
+							<label for="quantity" class="text-muted">QTY: </label>
+							<input type="number" min="1" max="25" class="quantity" value="1">
+						</div>
+						<a class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#login-modal"><b class="glyphicon glyphicon-shopping-cart"></b> ADD TO CART</a>
+					</div>
+				</form>
+			</div>
+
+
+
+			<div class="col-sm-4">
+				<h4 class="text-center">1 Fresh Kiwi (1lb)</h4>
+				<form class="form">
+					<img class="img-responsive center-block" src="http://cf.ltkcdn.net/vegetarian/images/std/121554-400x300-Kiwi_Fruit.jpg">
+					<div class="widget-content">
+						<span>$</span>
+						<span class="price">0.30</span>
+						<span class="total"></span>
+						<div class="pull-right">
+							<label for="quantity" class="text-muted">QTY: </label>
+							<input type="number" min="1" max="25" class="quantity" value="1">
+						</div>
+						<a class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#login-modal"><b class="glyphicon glyphicon-shopping-cart"></b> ADD TO CART</a>
+					</div>
+				</form>
+			</div>
+
+
+		</div> <!-- end of row -->
+	</div> <!-- end of container -->
+
+	<div class="modal fade" id="login-modal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button data-dismiss="modal" class="close">&times;</button>
+					<h3 class="modal-title text-center">Account Log In</h3>
+				</div>
+				<div class="modal-body">
+					<div class="form-horizontal">
+						<div class="form-group">
+						<div class="col-sm-6">
+							<label class="sr-only">Username</label>
+							<input type="text" placeholder="Username" class="form-control">
+						</div>
+						<div class="col-sm-6">
+							<label class="sr-only">Password</label>
+							<input type="password" placeholder="Password" class="form-control">
+						</div>
+					</div>
+						<div class="form-group" id="btn">
+							<button class="btn btn-danger btn-block" data-dismiss="modal">Cancel</button>
+							<button class="btn btn-success btn-block" data-dismiss="modal">Sign In</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<script>
+	$(document).ready(function (){
+
+		$(".quantity").change(function () {
+			var quantity = $(this).val();
+			var $widget = $(this).closest(".widget-content");
+			var price = $widget.find(".price").html();
+			var total = "($" + (quantity * price).toFixed(2) + ")";
+			$widget.find(".total").html(total);
+		});
+	});
+
+	</script>
+</body>
+</html>
