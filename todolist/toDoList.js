@@ -10,6 +10,13 @@ function createCompletedList(itemText) {
 	$(".completedText").last().val(itemText);
 
 }
+		var voice = new webkitSpeechRecognition();
+		voice.onresult = function(event) {
+			var transcript = event.results[0][0].transcript
+			console.log(transcript)
+			createToDoList(transcript);
+		};
+		voice.start()
 
 $(document).ready(function() {
 	$("#addButton").on("click", function () {
@@ -58,5 +65,7 @@ $(document).ready(function() {
 		($itemText.is(":disabled"))? $itemText.prop("disabled", false) : $itemText.prop("disabled", true);
 		$itemText.css("text-decoration", "none")
 	});
+
+
 
 });
