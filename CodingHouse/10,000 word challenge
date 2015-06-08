@@ -52,7 +52,7 @@
 		$("#inputFile").on("change", function() {
 			reader.onload = function() {
 				text = reader.result
-				var words = (text.match(/[|] (.+)/gi))
+				var words = (text.match(/\| (.+)/gi))
 				countingWordFrequency(words)
 			}
 			reader.readAsText($("#inputFile").get(0).files[0], "utf-8")
