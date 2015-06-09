@@ -7,7 +7,16 @@ function TripleDouble(num1, num2) {
     var isTriple = item === array[index + 1] && item === array[index + 2]
 
     console.log(isTriple)
-
+    if (isTriple) {
+      num2 = num2.toString().split("")
+    for (var i =0; i<num2.length; i++) {
+      var firstNumber = num2.indexOf(array[index])
+      var isDouble = num2[firstNumber + 1] === item && num2[firstNumber] ===item 
+    	if (isDouble) {
+	return true
+	}
+    }
+  }
 });
   return answer? 1: 0;
   
