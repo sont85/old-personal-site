@@ -12,6 +12,12 @@ firebaseRef.authWithCustomToken("AUTH_TOKEN", function(error, authData) {
 });
 
 
+	var hideButtons = function() {
+		$(".sign-in").addClass("hidden");
+		$("#logOutButton").removeClass("hidden");
+	}
+
+
 	$("#annoymousButton").click(function(event) {
 		event.preventDefault();
 		firebaseRef.authAnonymously(function(error, authData) {
@@ -20,7 +26,7 @@ firebaseRef.authWithCustomToken("AUTH_TOKEN", function(error, authData) {
 		  } else {
 		    console.log("Authenticated successfully with payload:", authData);
 		    validUser = true;
-		    alert("Login Successfully As Annoymous");
+		    hideButtons();
 	  	}
 	  }), function(error, authData) {
 	    remember: "sessionOnly"
@@ -39,7 +45,7 @@ firebaseRef.authWithCustomToken("AUTH_TOKEN", function(error, authData) {
 			} else {
 				console.log("Successful created user account with uid:", userData.uid);
 				validUser = true
-		    alert("Successfully Created A New User");
+				hideButtons()
 
 			}
 		});
@@ -59,8 +65,8 @@ firebaseRef.authWithCustomToken("AUTH_TOKEN", function(error, authData) {
 	    } else {
 	    	userID = authData.password.email
 	    	validUser = true
+				hideButtons()
 	      console.log("Authenticated successfully with payload:", authData);
-		    alert("Login Successfully As "+ userID);
 	    }
 	  }, function(error, authData) {
 	    remember: "sessionOnly"
@@ -72,8 +78,9 @@ firebaseRef.authWithCustomToken("AUTH_TOKEN", function(error, authData) {
 	$("#logOutButton").click(function () {
 		firebaseRef.unauth()
 		if (validUser) {
+			$(".sign-in").removeClass("hidden");
+			$("#logOutButton").addClass("hidden");
 			validUser = false;
-			alert("Log Out Successfully");
 		}
 	});
 	
