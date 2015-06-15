@@ -1,6 +1,7 @@
 $(document).ready(function() {
 	var firebaseRef = new Firebase('https://firechat3.firebaseio.com/Chatroom');
 	var userID
+	var validUser
 
 firebaseRef.authWithCustomToken("AUTH_TOKEN", function(error, authData) {
   if (error) {
@@ -11,7 +12,6 @@ firebaseRef.authWithCustomToken("AUTH_TOKEN", function(error, authData) {
 });
 
 
-
 	$("#annoymousButton").click(function(event) {
 		event.preventDefault();
 		firebaseRef.authAnonymously(function(error, authData) {
@@ -19,6 +19,8 @@ firebaseRef.authWithCustomToken("AUTH_TOKEN", function(error, authData) {
 		    console.log("Login Failed!", error);
 		  } else {
 		    console.log("Authenticated successfully with payload:", authData);
+		    validUser = true;
+		    alert("Login Successfully As Annoymous");
 	  	}
 	  }), function(error, authData) {
 	    remember: "sessionOnly"
@@ -36,6 +38,9 @@ firebaseRef.authWithCustomToken("AUTH_TOKEN", function(error, authData) {
 				console.log("Error creating user:", error);
 			} else {
 				console.log("Successful created user account with uid:", userData.uid);
+				validUser = true
+		    alert("Successfully Created A New User");
+
 			}
 		});
 		userID = $("#signUpEmail").val();
@@ -53,7 +58,9 @@ firebaseRef.authWithCustomToken("AUTH_TOKEN", function(error, authData) {
 	      console.log("Login Failed!", error);
 	    } else {
 	    	userID = authData.password.email
+	    	validUser = true
 	      console.log("Authenticated successfully with payload:", authData);
+		    alert("Login Successfully As "+ userID);
 	    }
 	  }, function(error, authData) {
 	    remember: "sessionOnly"
@@ -64,14 +71,22 @@ firebaseRef.authWithCustomToken("AUTH_TOKEN", function(error, authData) {
 
 	$("#logOutButton").click(function () {
 		firebaseRef.unauth()
+		if (validUser) {
+			validUser = false;
+			alert("Log Out Successfully");
+		}
 	});
 	
 	var getTime = function() {
 		var date = new Date()
-		var hour = date.getHours();
-		var minute = date.getMinutes();
-		var timeStamp = "Posted: "+hour+":"+minute
-		return timeStamp
+	  var hours = date.getHours();
+	  var minutes = date.getMinutes();
+	  var ampm = hours >= 12 ? 'pm' : 'am';
+	  hours = hours % 12;
+	  hours = hours ? hours : 12; // the hour '0' should be '12'
+	  minutes = minutes < 10 ? '0'+minutes : minutes;
+	  var timeStamp = hours + ':' + minutes + ' ' + ampm;
+	  return timeStamp;
 	}
 
 	var captureMessage = function() {
@@ -105,15 +120,23 @@ firebaseRef.authWithCustomToken("AUTH_TOKEN", function(error, authData) {
 		}
 	};
 
-	$(document).on("keyup", function(event){
+	$("#textInput").on("keyup", function(event){
 		if (event.which === 13) {
+			if (!validUser) {
+				alert("Please log in first with an email or annoymously")
+			} else {
 			captureMessage();
+			}
 		}
 	});
 
 	$("#submitButton").click(function(event) {
-		event.preventDefault();
-		captureMessage();
+		if (!validUser) {
+			alert("Please log in first with an email or annoymously")
+		} else {
+			event.preventDefault();
+			captureMessage();
+		}
 	});
 });
 
