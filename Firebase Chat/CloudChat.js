@@ -112,13 +112,13 @@ firebaseRef.authWithCustomToken("AUTH_TOKEN", function(error, authData) {
 	firebaseRef.on("child_added", function(snapshot){
 		var content = snapshot.val()
 		console.log(content)
-			cloneTemplate(content);
-		}), function(errorObject) {
-			console.log(errorObject.code)
+		cloneTemplate(content);
+	}), function(errorObject) {
+		console.log(errorObject.code)
 	}
 
 	var cloneTemplate = function(content) {
-		if (content.user && content.message) {
+		if (content.message) {
 			var $clone = $("#template").clone().removeClass("hidden")
 			$clone.find(".user").text(content.user + ": ");
 			$clone.find(".message").text(content.message);
