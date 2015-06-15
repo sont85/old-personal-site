@@ -1,171 +1,169 @@
-var totalValue = 0
-var enterValue = ""
-var operatorCount = 0
-var addLast = false;
-var subtractLast = false;
-var multiplyLast = false;
-var divideLast = false;
-var numberLast= false;
-var equalLast = false;
-var clickAudio = document.getElementById("clickAudio");
-
-
-function reset() {
-	addLast = false;
-	subtractLast = false;
-	multiplyLast = false;
-	divideLast = false;
-	numberLast = false;
-	equalLast = false;
-	enterValue = ""
-}
-
-function displayAnswer(value) {
-	$("#answerDisplay").text(value)
-}
-
-function decimalCheck() { //display numbers with decimal if check is true
-	if (totalValue % 1 !== 0) {
-		displayAnswer(totalValue.toFixed(2));
-	} else {
-		displayAnswer(totalValue);
-	}
-}
-
-
-function addClick() {
-	enterValue = $("#answerDisplay").text();
-	if ((enterValue && numberLast) || (enterValue && equalLast)) { //checking to make sure enterValue is not empty and number key was last key press instead of operator key
-		addEvent(enterValue);
-		operatorCount += 1
-	} else {
-		$("#answerDisplay").text("");
-		enterValue = ""
-	}
-}
-
-function addEvent(value) {
-	if (operatorCount >= 1){    //total value equal enterValue on first operator
-		totalValue = totalValue + parseFloat(value);
-	} else if (operatorCount < 1){
-		totalValue = parseFloat(value)
-	}
-	displayAnswer(totalValue);
-	reset();
-	addLast = true;  // set addLast as true so equal button would add with the last number
-}
-
-function subtractClick() {
-	enterValue = $("#answerDisplay").text();
-	if ((enterValue && numberLast) || (enterValue && equalLast)) {
-		subtractEvent(enterValue);
-		operatorCount += 1;
-	} else {
-		$("#answerDisplay").text("");
-		enterValue = ""
-	}
-}
-
-
-function subtractEvent(value) {
-	if (operatorCount >=1){ 
-		totalValue = totalValue - parseFloat(value);
-	} else if (operatorCount < 1){
-		totalValue = parseFloat(value)
-	}
-	displayAnswer(totalValue);
-	reset();
-	subtractLast = true;
-}
-
-
-function multiplyClick() {
-	enterValue = $("#answerDisplay").text();
-	if ((enterValue && numberLast) || (enterValue && equalLast)) {
-		multiplyEvent(enterValue);
-		operatorCount += 1
-	} else {
-		$("#answerDisplay").text("");
-		enterValue = ""
-	}
-}
-
-
-function multiplyEvent(value) {
-	if (operatorCount >=1){
-		totalValue = totalValue * parseFloat(value);
-	} else if (operatorCount < 1){
-		totalValue = parseFloat(value)
-	}
-	decimalCheck();  // check for decimal and display
-	reset();
-	multiplyLast = true;
-}
-
-function divideClick() {
-	enterValue = $("#answerDisplay").text();
-	if ((enterValue && numberLast) || (enterValue && equalLast)) {
-		divideEvent(enterValue);
-		operatorCount += 1
-	} else {
-		$("#answerDisplay").text("");
-		enterValue = ""
-	}
-}
-
-function divideEvent(value) {
-	if (operatorCount >=1){
-		totalValue = totalValue / parseFloat(value);
-	} else if (operatorCount < 1){
-		totalValue = parseFloat(value)
-	}
-	decimalCheck();  //check for decimal and display
-	reset();
-	divideLast = true;
-}
-
-function equalClick() {
-	if (enterValue) { //making sure enterValue is not empty
-		if (addLast) { //checking to see which operator button was press last.
-			addEvent(enterValue);
-		} else if (subtractLast) {
-			subtractEvent(enterValue);
-		} else if (multiplyLast) {
-			multiplyEvent(enterValue);
-		} else if (divideLast) {
-			divideEvent(enterValue);
-		} 
-	}
-	reset();
-	equalLast = true;
-	operatorCount = 0;
-}
-
-function deleteEvent(value) {
-	enterValue = $("#answerDisplay").text();
-	enterValue = enterValue.substring(0, enterValue.length - 1); //delete last character on string
-	displayAnswer(enterValue);
-}
-
-
-function squareRootEvent(value) {
-	enterValue = $("#answerDisplay").text();
-	enterValue = Math.sqrt(parseFloat(enterValue));
-	if (enterValue) {
-		totalValue = enterValue.toFixed(2)
-		displayAnswer(totalValue);
-	}
-	enterValue = ""
-}
-
-function plusMinusEvent() {
-	enterValue = $("#answerDisplay").text();
-	enterValue = parseFloat(enterValue) * -1
-	displayAnswer(enterValue);
-}
-
 $(document).ready(function() {
-	$(".animsition").animsition();
+	var totalValue = 0
+	var enterValue = ""
+	var operatorCount = 0
+	var addLast = false;
+	var subtractLast = false;
+	var multiplyLast = false;
+	var divideLast = false;
+	var numberLast= false;
+	var equalLast = false;
+	var clickAudio = document.getElementById("clickAudio");
+
+
+	function reset() {
+		addLast = false;
+		subtractLast = false;
+		multiplyLast = false;
+		divideLast = false;
+		numberLast = false;
+		equalLast = false;
+		enterValue = ""
+	}
+
+	function displayAnswer(value) {
+		$("#answerDisplay").text(value)
+	}
+
+	function decimalCheck() { //display numbers with decimal if check is true
+		if (totalValue % 1 !== 0) {
+			displayAnswer(totalValue.toFixed(2));
+		} else {
+			displayAnswer(totalValue);
+		}
+	}
+
+
+	function addClick() {
+		enterValue = $("#answerDisplay").text();
+		if ((enterValue && numberLast) || (enterValue && equalLast)) { //checking to make sure enterValue is not empty and number key was last key press instead of operator key
+			addEvent(enterValue);
+			operatorCount += 1
+		} else {
+			$("#answerDisplay").text("");
+			enterValue = ""
+		}
+	}
+
+	function addEvent(value) {
+		if (operatorCount >= 1){    //total value equal enterValue on first operator
+			totalValue = totalValue + parseFloat(value);
+		} else if (operatorCount < 1){
+			totalValue = parseFloat(value)
+		}
+		displayAnswer(totalValue);
+		reset();
+		addLast = true;  // set addLast as true so equal button would add with the last number
+	}
+
+	function subtractClick() {
+		enterValue = $("#answerDisplay").text();
+		if ((enterValue && numberLast) || (enterValue && equalLast)) {
+			subtractEvent(enterValue);
+			operatorCount += 1;
+		} else {
+			$("#answerDisplay").text("");
+			enterValue = ""
+		}
+	}
+
+
+	function subtractEvent(value) {
+		if (operatorCount >=1){ 
+			totalValue = totalValue - parseFloat(value);
+		} else if (operatorCount < 1){
+			totalValue = parseFloat(value)
+		}
+		displayAnswer(totalValue);
+		reset();
+		subtractLast = true;
+	}
+
+
+	function multiplyClick() {
+		enterValue = $("#answerDisplay").text();
+		if ((enterValue && numberLast) || (enterValue && equalLast)) {
+			multiplyEvent(enterValue);
+			operatorCount += 1
+		} else {
+			$("#answerDisplay").text("");
+			enterValue = ""
+		}
+	}
+
+
+	function multiplyEvent(value) {
+		if (operatorCount >=1){
+			totalValue = totalValue * parseFloat(value);
+		} else if (operatorCount < 1){
+			totalValue = parseFloat(value)
+		}
+		decimalCheck();  // check for decimal and display
+		reset();
+		multiplyLast = true;
+	}
+
+	function divideClick() {
+		enterValue = $("#answerDisplay").text();
+		if ((enterValue && numberLast) || (enterValue && equalLast)) {
+			divideEvent(enterValue);
+			operatorCount += 1
+		} else {
+			$("#answerDisplay").text("");
+			enterValue = ""
+		}
+	}
+
+	function divideEvent(value) {
+		if (operatorCount >=1){
+			totalValue = totalValue / parseFloat(value);
+		} else if (operatorCount < 1){
+			totalValue = parseFloat(value)
+		}
+		decimalCheck();  //check for decimal and display
+		reset();
+		divideLast = true;
+	}
+
+	function equalClick() {
+		if (enterValue) { //making sure enterValue is not empty
+			if (addLast) { //checking to see which operator button was press last.
+				addEvent(enterValue);
+			} else if (subtractLast) {
+				subtractEvent(enterValue);
+			} else if (multiplyLast) {
+				multiplyEvent(enterValue);
+			} else if (divideLast) {
+				divideEvent(enterValue);
+			} 
+		}
+		reset();
+		equalLast = true;
+		operatorCount = 0;
+	}
+
+	function deleteEvent(value) {
+		enterValue = $("#answerDisplay").text();
+		enterValue = enterValue.substring(0, enterValue.length - 1); //delete last character on string
+		displayAnswer(enterValue);
+	}
+
+
+	function squareRootEvent(value) {
+		enterValue = $("#answerDisplay").text();
+		enterValue = Math.sqrt(parseFloat(enterValue));
+		if (enterValue) {
+			totalValue = enterValue.toFixed(2)
+			displayAnswer(totalValue);
+		}
+		enterValue = ""
+	}
+
+	function plusMinusEvent() {
+		enterValue = $("#answerDisplay").text();
+		enterValue = parseFloat(enterValue) * -1
+		displayAnswer(enterValue);
+	}
 
 	$(".btn").click(function() {
 		clickAudio.currentTime = 0;
