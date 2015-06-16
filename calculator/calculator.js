@@ -221,8 +221,8 @@ $(document).ready(function() {
 	});
 
 	//keyboard events
-	window.addEventListener("keypress", function (event) { 
-		console.log(event.which)
+	window.addEventListener("keydown", function (event) { 
+		
 		clickAudio.currentTime = 0;
 		clickAudio.play();
 
@@ -232,7 +232,7 @@ $(document).ready(function() {
 			numberLast = true;
 			displayAnswer(enterValue);
 
-		} else if (event.which === 46 || event.which === 110) { // decimal
+		} else if (event.which === 190 || event.which === 110) { // decimal
 			enterValue += "."
 			displayAnswer(enterValue);
 
@@ -242,19 +242,19 @@ $(document).ready(function() {
 		} else if (event.which === 189) { //negative symbol
 			plusMinusEvent();
 
-		} else if (event.which === 107 || event.which === 43) { //plus sign
+		} else if (event.which === 107) { //plus sign
 			addClick()
 
-		} else if (event.which === 109 || event.which === 45) { //subtract sign
+		} else if (event.which === 109) { //subtract sign
 			subtractClick();
 
-		} else if (event.which === 106 || event.which === 42) { //multiply sign
+		} else if (event.which === 106) { //multiply sign
 			multiplyClick();
 
-		} else if (event.which === 111 || event.which === 47) { //divide sign
+		} else if (event.which === 111 || event.which === 191) { //divide sign
 			divideClick();
 
-		} else if (event.which === 13 || event.which === 61) { //enter key
+		} else if (event.which === 13) { //enter key
 			event.preventDefault();
 			equalClick();
 		}

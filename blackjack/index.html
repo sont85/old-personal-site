@@ -1,0 +1,162 @@
+<!Doctype html>
+<html>
+<head>
+  <title>BlackJack</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="shortcut icon" href="../favicon.jpeg">
+  <style>
+  body {
+    background:radial-gradient(#dde5ff, #9ba0b2);
+  }
+  td {
+    border: 2px solid black;
+    padding: 10px 10px;
+  }
+  .card{
+    border: 2px solid black;
+    padding: 70px 10px;
+    min-width: 100px;
+    background: radial-gradient(#66A3c2, #94bfd4);
+    display: inline-block;
+    word-wrap:break-word;
+    margin-right: 8px;
+
+  }
+  #dealerPoint,
+  #playerPoint {
+    color: red;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  #clearScoreButton{
+    margin-bottom: 20px;
+  }
+
+  .scoreBoard {
+    border: 2px solid black;
+    display: inline-block;
+    padding: 10px;
+    background: #222;
+    color: #Eee;
+  }
+
+  .btn {
+    min-width: 100px
+  }
+
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="navbar navbar-default">
+      <div>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="http://decoding.ghost.io/" class="navbar-brand">My Blog</a>
+        <a href="https://github.com/sont85"><i class="fa fa-github fa-2x navbar-brand hidden-xs" title="Github"></i></a>
+        <a href="https://www.linkedin.com/pub/son-truong/b8/888/427"><i class="fa fa-linkedin-square fa-2x navbar-brand hidden-xs" title="LinkedIn"></i></a>
+        <a href="https://twitter.com/Fade_2_bliss"><i class="fa fa-twitter fa-2x navbar-brand hidden-xs" title="Twitter"></i></a>
+
+        <!-- collapsable navbar -->
+        <div class="collapse navbar-collapse">
+          <div class="navbar-right"  id="navbar-spy">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="http://luckycode.org/"><i class="fa fa-home"></i> Home</a></li>
+
+              <li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-link"></i> Links<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="https://github.com/sont85"><i class="fa fa-github"></i> Github</a></li>
+                  <li><a href="https://www.linkedin.com/pub/son-truong/b8/888/427"><i class="fa fa-linkedin-square"></i> Linkedin</a></li>
+                  <li><a href="https://twitter.com/Fade_2_bliss"><i class="fa fa-twitter"></i> Twitter</a></li>  
+                </ul>
+              </li>
+
+              <!-- email tooltip -->
+              <li id="email"  data-toggle="tooltip" data-placement="left" title="sont85@gmail.com">
+                <a href="mailto:sont85@gmail.com?subject=Inquiry">
+                  <i class="fa fa-info"></i> Email
+                </a>
+              </li>
+
+            </ul>
+          </div>
+        </div> <!-- end of collapse -->
+      </div>
+    </div><!-- end of navbar -->
+    <h2 class="page-header text-center">BlackJack</h3>
+    <div class="row">
+      <div class="col-sm-3">
+        <h3 class="text-center" id="outcome"></h3>
+        <h4 class="text-center hidden" id="blackjack">$$ BLACK JACK $$</h4>
+        <h4 class="text-center hidden" id="bust">PLAYER BUST</h4>
+
+      </div>
+
+      <div class="col-sm-6">
+        <div class="lead hidden-xs" style="display:inline-block">Score</div>
+        <div class="scoreBoard">
+          <span>Player: </span>
+          <span id="playerScore">0</span>
+        </div>
+        <div class="scoreBoard">
+
+          <span>Dealer: </span>
+          <span id="dealerScore">0</span>
+        </div>
+        <div class="scoreBoard">
+          <span>Draw: </span>
+          <span id="drawScore">0</span>
+        </div>
+        <div style="display:inline-block">
+          <button class="btn btn-warning" id="clearScoreButton">Clear Score</button>
+        </div>
+      </div>
+    </div>
+
+    <div class= "row">
+      <div class="col-sm-6">
+        <span class="h4">Player Hand</span>
+        <button class="btn btn-success btn-lg" id="hitButton">Hit</button>
+        <button class="btn btn-default btn-lg" id="passButton">Pass</button>
+        <div>
+          <span class="lead">Player Point Total : </span><span class="lead" id="playerPoint"></span>
+        </div>
+        <div id="playerHand">
+          <!--cards append here-->
+        </div>
+      </div> <!--end of col-->
+
+
+
+
+
+      <div class="col-sm-6">
+        <h4>Dealer Hand</h4>
+        <div>
+          <span class="lead">Dealer Point Total: </span><span class="lead" id="dealerPoint"></span>
+        </div>
+        <div id="dealerHand">
+          <!--cards append here-->
+        </div>
+
+      </div> <!--end of col-->
+
+    </div> <!--end of row-->
+
+
+  </div> <!--end of container -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script src="blackjack.js"></script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>To do List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="../favicon.jpeg">
+    <style>
+      body {
+        padding-top: 80px;
+        background: -webkit-radial-gradient(#ABABAB, #DDD);
+      }
+      .form-group {
+        border: #DfDfDf;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container animsition" data-animsition-in="fade-in">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a href="http://decoding.ghost.io/" class="navbar-brand">My Blog</a>
+        <a href="https://github.com/sont85"><i class="fa fa-github fa-2x navbar-brand hidden-xs" title="Github"></i></a>
+        <a href="https://www.linkedin.com/pub/son-truong/b8/888/427"><i class="fa fa-linkedin-square fa-2x navbar-brand hidden-xs" title="LinkedIn"></i></a>
+        <a href="https://twitter.com/Fade_2_bliss"><i class="fa fa-twitter fa-2x navbar-brand hidden-xs" title="Twitter"></i></a>
+
+        <!-- collapsable navbar -->
+        <div class="collapse navbar-collapse">
+          <div class="navbar-right"  id="navbar-spy">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="http://luckycode.org"><i class="fa fa-home"></i> Home</a></li>
+
+              <li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-link"></i> Links<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="https://github.com/sont85"><i class="fa fa-github"></i> Github</a></li>
+                  <li><a href="https://www.linkedin.com/pub/son-truong/b8/888/427"><i class="fa fa-linkedin-square"></i> Linkedin</a></li>
+                  <li><a href="https://twitter.com/Fade_2_bliss"><i class="fa fa-twitter"></i> Twitter</a></li>  
+                </ul>
+              </li>
+
+              <!-- email tooltip -->
+              <li id="email"  data-toggle="tooltip" data-placement="left" title="sont85@gmail.com">
+                <a href="mailto:sont85@gmail.com?subject=Inquiry">
+                  <i class="fa fa-info"></i> Email
+                </a>
+              </li>
+
+                <!-- dropdown menu  Links -->
+
+
+
+            </ul>
+          </div>
+        </div> <!-- end of collapse -->
+      </div>
+    </div><!-- end of navbar -->
+
+  <div class="container">
+    <h3 class="page-header text-center">To Do List</h3>
+
+    <div class="row">
+      <div class="form-group col-sm-8 col-sm-offset-2">
+        <div class="input-group">
+          <span class="input-group-addon">Add Item</span>
+          <input type="text" class="form-control" id="addText"></input>
+          <span class="input-group-btn">
+            <button class="btn btn-success" id="addButton">Add</button>
+          </span>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group"  id="toDoSection">
+          <h3 class="page-header">To Do</h3>
+<!--       <div class="input-group">
+            <span class="input-group-addon">
+              <input type="checkbox" class="toDoCheckBox"></input>
+            </span>
+            <input type="text" class="form-control listInput" disabled></input>
+            <span class="input-group-btn">
+              <button class="btn btn-warning toDoEditButton">Edit</button>
+            </span>
+
+            <span class="input-group-btn">
+              <button class="btn btn-danger">Delete</button>
+            </span>
+          </div> -->
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="form-group" id="completedSection">
+        <h3 class="page-header">Completed</h3>
+<!--       <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon">
+                <input type="checkbox" class="completedCheckBox"></input>
+              </span>
+              <input type="text" class="form-control completedText" disabled></input>
+              <span class="input-group-btn">
+                <button class="btn btn-warning completedEditButton">Edit</button>
+              </span>
+
+              <span class="input-group-btn">
+                <button class="btn btn-danger completedDeleteButton">Delete</button>
+              </span>
+            </div> -->
+        </div>
+      </div> <!--end of completed column-->
+
+
+
+    </div> <!-- end of row -->
+  </div> <!-- end of container -->
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="toDoList.js"></script>
+  </body>
+</html>
