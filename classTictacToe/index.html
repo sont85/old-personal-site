@@ -1,0 +1,68 @@
+<!Doctype html>
+<html>
+<head>
+  <title>TicTacToe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <style> 
+  body {
+    background:#92b3b2;
+  }
+  .ticTacButton {
+    background : linear-gradient(to top left, #99c5d1, #5d5f66) ;
+    width: 7vmin, 13vw; 
+    height: 13vw;
+    font-size: 60px;
+    border: 2px solid black;
+    background-border: solid black 5px;
+
+  }
+  .activePlayer {
+    background: #AFDAe3;
+  }
+
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div>
+      <h1 class="page-header text-center">Tic-Tac-Toe</h2>
+      <p class="lead text-center">Get Three In A Row</p>
+      <p class="lead text-center" id="winnerText"></p>
+    </div>
+    <div class="row">
+      <div class="col-xs-offset-2">
+        <span class="h2 activePlayer" id="player1">Player 1(X): </h2>
+        <span class="h2" id="player2">Player 2(O): </h2>
+        <button class="btn btn-success btn-lg" id="playButton">*Play Again</button>
+      </div>
+    </div> <!--end of column-->
+    <div class="row">
+      <div class="text-center">
+        <div class="gameRow row" id="game">
+          <button class="ticTacButton btn col-xs-4" id="box1"></button>
+          <button class="ticTacButton btn col-xs-4" id="box2"></button>
+          <button class="ticTacButton btn col-xs-4" id="box3"></button>
+        </div>
+        <div class="gameRow row">
+          <button class="ticTacButton btn col-xs-4" id="box4"></button>
+          <button class="ticTacButton btn col-xs-4" id="box5"></button>
+          <button class="ticTacButton btn col-xs-4" id="box6"></button>
+        </div>
+        <div class="gameRow row">
+          <button class="ticTacButton btn col-xs-4" id="box7"></button>
+          <button class="ticTacButton btn col-xs-4" id="box8"></button>
+          <button class="ticTacButton btn col-xs-4" id="box9"></button>
+        </div>
+      </div>
+    </div>
+  </div> <!-- end of container -->
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <script src="tictactoe.js"></script>
+</body>
+</html>
