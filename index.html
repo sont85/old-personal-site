@@ -10,13 +10,16 @@
     <link href='http://fonts.googleapis.com/css?family=Pacifico|Slabo+27px' rel='stylesheet' type='text/css'>
     <style>
       body {
-        padding-top: 55px;
+        padding-top: 80px;
         background: -webkit-repeating-radial-gradient( #7FA2c9, #BFC6E3);
         font-family: 'Slabo 27px', serif;
         position: relative;
       }
-
-      .hover {
+      h3{
+        color: #80732E;
+        font-family: 'Pacifico', cursive;
+      }
+      h2 {
         color: #80732E;
         font-family: 'Pacifico', cursive;
         transition: 1s;
@@ -26,16 +29,11 @@
         font-size: 4em;
         text-shadow: 5px 5px 5px  #222;
       }
-      .h3 {
-        font-family: 'Pacifico', cursive;
-        color: #80732E;
-        letter-spacing: 5px;
-      }
-      .white{
-        color: white;
-      }
       .navbar-default {
-        background-color: #BFC6E3;
+        background-color: #A5c1e8;
+      }
+      .navbar-default:hover {
+        background-color: #25c1e8;
       }
       .project {
         box-shadow: 5px 5px 5px -3px #39453A;
@@ -53,17 +51,10 @@
         line-height: 50px;
         transition-timing-function: ease-out;
         transition: 2s;
-        opacity: 0.8;
-      }
+        }
       .language:hover {
         transform: rotate(1080deg) skewY(30deg);
         opacity: .5;
-      }
-      #city {
-        background: url("https://www.agtinternational.com/wp-content/uploads/2013/11/City-solution.jpg");
-        background-size: cover;
-        height: 600px;
-        padding-top: 100px;
       }
 
 
@@ -117,15 +108,13 @@
     </div><!-- end of navbar -->
 
 
-
-    <!-- About Page -->
-    <div id="city">
     <div class="container">
 
+    <!-- About Page -->
       <div class="row animsition" data-animsition-in="fade-in-left-lg">
         <div class="col-sm-8">
-          <h2 class="text-center hover white">Son Truong</h2>
-          <p class="lead text-center h3 white">Full-stack developer</p>
+          <h2 class="text-center page-header">Son Truong</h2>
+          <p class="lead text-center h3">Full-stack developer</p>
           <div class="languageDiv">
             <button class="language lead bg-success">HTML5</button>
             <button class="language lead bg-primary">CSS3</button>
@@ -143,12 +132,10 @@
           <a class="btn btn-info btn-lg btn-block" href="#"><span class="glyphicon glyphicon-education"></span> Resume</a>
         </div>
       </div>
-    </div>
-  </div>
 
       <!-- Projects -->
       <div class="container animsition" id="projects">
-        <h2 class="text-center page-header hover">Projects</h2>
+        <h2 class="text-center page-header">Projects</h2>
         
         <div class="row">
 
@@ -224,6 +211,13 @@
             <h4 class="text-center">Fire Chat</h4>
           </div>
 
+          <div class="col-sm-4 project animsition">
+            <a href="Hanoi Tower/index.html" class="animsition-link">
+              <img class="img-responsive center-block img-rounded" src="http://ecx.images-amazon.com/images/I/31AYnPgBpjL.jpg">
+            </a>
+            <h4 class="text-center">Hanoi Tower</h4>
+          </div>
+
 
 
         </div> <!-- end of row -->
@@ -234,7 +228,7 @@
 
         <div class="row">
           <div class="col-sm-6">
-            <p class="text-center h3 page-header">Blog</p>
+            <h3 class="text-center page-header">Blog</h3>
             <div>
               <h4><a href="http://decoding.ghost.io/welcome-to-ghost/">Career Start</a></h4>
               <p class="text-muted">Son Truong   13 May 2015</p>
@@ -245,7 +239,7 @@
 
           </div>
           <div class="col-sm-6">
-            <h3 class="text-center h3 page-header">Social Media</h3>
+            <h3 class="text-center page-header">Social Media</h3>
             <a class="twitter-timeline" href="https://twitter.com/Fade_2_bliss" data-widget-id="598594082529681408">Tweets by @Fade_2_bliss</a>
           </div>
         </div>
@@ -256,7 +250,7 @@
 
     <!-- Contact Me -->
         <div id="contact">
-          <h3 class="text-center h3 page-header">Contact Me</h3>
+          <h2 class="text-center page-header">Contact Me</h2>
           <form class="form-horizontal">
             <div class="form-group">
               <label class="control-label col-sm-2 col-sm-offset-1" for="name">Name</label>
@@ -292,6 +286,7 @@
           </form>
         </div> <!-- end of contact -->
 
+      </div> <!--end of container -->
     </div><!-- end of main div-->
 
 

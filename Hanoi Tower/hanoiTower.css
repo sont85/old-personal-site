@@ -1,0 +1,38 @@
+      body {
+        background: #9D8080;
+      }
+      .towers{
+        height: 30px;
+        margin: auto;
+        border: 2px solid black;
+        color: white;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        /*position: absolute;*/
+      }
+      #container1 {
+        background-image: url("http://violacruise.com/Uploads/images/vietnam-vizesi-Halong-1.jpg");
+        background-size: cover;
+      }
+      #container2 {
+        background: url("http://www.vietnamtriptips.com/wp-content/uploads/2014/07/Tien-huong-tower-pagoda-in-nam-dinh-vietnam-2.jpg");
+        background-size: cover;
+      }
+      #container3 {
+        background: url("https://www.svietnamtravel.com/images/destinations/saigon/Bitexco/bitexco-finance-tower.jpg");
+        background-size: cover;
+      }
+      .towerContainer{
+        border: 2px dashed blue;
+        min-height: 400px;
+        position: relative;
+      }
+      #tower1 {
+        background: rgb(10,30,30);
+      }
+      #tower2 {
+        background: rgb(20,60,60);
+      }
+      #tower3 {
+        background: rgb(30,90,90);
+      }
