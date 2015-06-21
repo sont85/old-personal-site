@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html ng-app="contact" ng-controller="mainCtrl as c">
+
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script data-require="angular.js@1.4.1" data-semver="1.4.1" src="https://code.angularjs.org/1.4.1/angular.js"></script>
+<!--     <link rel="stylesheet" href="style.css" /> -->
+    <script src="angular-md5/angular-md5.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <script src="table.js"></script>
+    <style>
+      .inputContact {
+        background: #ABCABC;
+      }
+      .contactList {
+        background: #BDCCCC;
+      }
+      .contactList,
+      .inputContact {
+        padding: 15px;
+        min-height: 800px; 
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="navbar navbar-default">
+        <div class="animsition" data-animsition-in="fade-in">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="http://decoding.ghost.io/" class="navbar-brand">My Blog</a>
+          <a href="https://github.com/sont85"><i class="fa fa-github fa-2x navbar-brand hidden-xs" title="Github"></i></a>
+          <a href="https://www.linkedin.com/pub/son-truong/b8/888/427"><i class="fa fa-linkedin-square fa-2x navbar-brand hidden-xs" title="LinkedIn"></i></a>
+          <a href="https://twitter.com/Fade_2_bliss"><i class="fa fa-twitter fa-2x navbar-brand hidden-xs" title="Twitter"></i></a>
+
+          <!-- collapsable navbar -->
+          <div class="collapse navbar-collapse">
+            <div class="navbar-right"  id="navbar-spy">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="http://luckycode.org/"><i class="fa fa-home"></i> Home</a></li>
+
+                <li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-link"></i> Links<b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="https://github.com/sont85"><i class="fa fa-github"></i> Github</a></li>
+                    <li><a href="https://www.linkedin.com/pub/son-truong/b8/888/427"><i class="fa fa-linkedin-square"></i> Linkedin</a></li>
+                    <li><a href="https://twitter.com/Fade_2_bliss"><i class="fa fa-twitter"></i> Twitter</a></li>  
+                  </ul>
+                </li>
+
+                <!-- email tooltip -->
+                <li id="email"  data-toggle="tooltip" data-placement="left" title="sont85@gmail.com">
+                  <a href="mailto:sont85@gmail.com?subject=Inquiry">
+                    <i class="fa fa-info"></i> Email
+                  </a>
+                </li>
+
+              </ul>
+            </div>
+          </div> <!-- end of collapse -->
+        </div>
+      </div><!-- end of navbar -->
+      <h2 class="text-center">Contact List</h2>
+      <div class="row">
+        <div class="col-sm-3 inputContact">
+          <h3 class="text-center">Add Contacts</h3>
+          <form>
+            <input ng-model="contact.firstName" class="form-control inputData" placeholder="First Name" >
+            <input ng-model="contact.lastName" class="form-control inputData" placeholder="Last Name" >
+            <input ng-model="contact.email" class="form-control inputData" type="email" placeholder="email" >
+            <input ng-model="contact.phoneNumber" class="form-control inputData" type="tel" placeholder="Phone Number">
+            <div class="text-center">
+            <button id="submitButton" class="btn btn-success" ng-click="c.addContact(contact); contact = null">Submit</button>
+            </div>
+          </form>
+        </div>
+        <div class="col-sm-9 contactList">
+          <input ng-model="search" class="form-control" placeholder="search" type="search">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th ng-click="c.sort(header); c.reverseSort = !c.reverseSort" ng-repeat="header in c.headerList">{{header}}</th>
+              </tr>
+            </thead>
+            <tbody ng-repeat="contact in c.contactList | filter: search | orderBy: c.sortHeaderName : c.reverseSort track by $index">
+              <tr ng-hide="c.edit === $index">
+                <td>{{contact.firstName}}</td>
+                <td>{{contact.lastName}}</td>
+                <td>{{contact.phoneNumber}}</td>
+                <td>{{contact.email}}</td>
+                <td><img src="{{contact.gravatar}}"></td>
+                <td>
+                  <button ng-click="c.deleteRow($index)" class="btn btn-default">delete</button>
+                </td>
+                <td>
+                  <button ng-click="c.editRow($index)" class="btn btn-default">edit</button>
+                </td>
+              </tr>
+              <tr ng-show="c.edit === $index">
+                <td><input type="text" ng-model="contact.firstName" class="form-control"></td>
+                <td><input type="text" ng-model="contact.lastName" class="form-control"></td>
+                <td><input type="text" ng-model="contact.phoneNumber" class="form-control"></td>
+                <td><input type="text" ng-model="contact.email" class="form-control"></td>
+                <td><input type="text" ng-model="contact.gravatar" class="form-control"></td>
+                <td><input type="submit" ng-click="c.submitEdit(contact, $index)" class="form-control"></td>
+              </tr>
+            </tbody>
+            <tfoot>
+            </tfoot>
+
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>
