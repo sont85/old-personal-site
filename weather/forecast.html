@@ -1,0 +1,9 @@
+<h2 class="text-center">10-Day Forecast</h2>
+<div ng-repeat="day in forecast" class="days">
+    <span class="h3">{{day.date.weekday}}</span>
+    <span class="h5">{{day.date.month}}/{{day.date.day}}/{{day.date.year}}</span>
+    <br>
+    <img ng-src="{{day.icon_url}}">
+    <span>High: {{day.high.fahrenheit}}&#x2109;</span>
+    <span>Low: {{day.low.fahrenheit}}&#x2109;</span>
+</div>
