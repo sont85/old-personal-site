@@ -12,6 +12,7 @@ $(document).ready(function() {
 		resetGame: function() {
 								$$.numberOfTowers = null;
 								$$.layerNumber = null;
+								$("#winText").text("");
 							},
 		buildTower: function() {
 									var i = 1;
@@ -35,7 +36,7 @@ $(document).ready(function() {
 								},
 			winCheck: function() {
 									if ($$.container3.children().length === $$.numberOfTowers) {
-										alert("congrats on solving " + $$.numberOfTowers + " towers!");
+										$("#winText").text("Congratulation you solved a game "+$$.numberOfTowers+ "towers!!")
 								}
 			}
 	};
