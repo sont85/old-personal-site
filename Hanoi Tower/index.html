@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hanoi Tower</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="hanoiTower.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="navbar navbar-default">
+        <div class="animsition" data-animsition-in="fade-in">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a href="http://decoding.ghost.io/" class="navbar-brand">My Blog</a>
+          <a href="https://github.com/sont85"><i class="fa fa-github fa-2x navbar-brand hidden-xs" title="Github"></i></a>
+          <a href="https://www.linkedin.com/pub/son-truong/b8/888/427"><i class="fa fa-linkedin-square fa-2x navbar-brand hidden-xs" title="LinkedIn"></i></a>
+          <a href="https://twitter.com/Fade_2_bliss"><i class="fa fa-twitter fa-2x navbar-brand hidden-xs" title="Twitter"></i></a>
+
+          <!-- collapsable navbar -->
+          <div class="collapse navbar-collapse">
+            <div class="navbar-right"  id="navbar-spy">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="http://luckycode.org/"><i class="fa fa-home"></i> Home</a></li>
+
+                <li><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-link"></i> Links<b class="caret"></b></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="https://github.com/sont85"><i class="fa fa-github"></i> Github</a></li>
+                    <li><a href="https://www.linkedin.com/pub/son-truong/b8/888/427"><i class="fa fa-linkedin-square"></i> Linkedin</a></li>
+                    <li><a href="https://twitter.com/Fade_2_bliss"><i class="fa fa-twitter"></i> Twitter</a></li>  
+                  </ul>
+                </li>
+
+                <!-- email tooltip -->
+                <li id="email"  data-toggle="tooltip" data-placement="left" title="sont85@gmail.com">
+                  <a href="mailto:sont85@gmail.com?subject=Inquiry">
+                    <i class="fa fa-info"></i> Email
+                  </a>
+                </li>
+
+              </ul>
+            </div>
+          </div> <!-- end of collapse -->
+        </div>
+      </div><!-- end of navbar -->
+      <h1 class="text-center">Hanoi Tower</h1>
+      <div class="text-center">
+      <span class="h5">Number of Towers<span>
+        <input type="number" value="3" id="towerInput" min="3" max="15">
+      </div>
+      <div class="row">
+        <div class="col-xs-4">
+          <h4 class="text-center">Tower 1</h4>
+        	<div id="container1" class="towerContainer text-center">
+            <div id="tower1" class="towers" style="width: 6.65%" >1</div>
+            <div id="tower2" class="towers" style="width: 13.3%">2</div>
+            <div id="tower3" class="towers" style="width: 20%">3</div>
+          </div>
+        </div>
+        <div class="col-xs-4">
+          <h4 class="text-center">Tower 2</h4>
+        	<div id="container2" class="towerContainer text-center"></div>
+        </div>
+        <div class="col-xs-4">
+          <h4 class="text-center">Tower 3</h4>
+        	<div id="container3" class="towerContainer text-center"></div>
+        </div>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="hanoiTower.js"></script>
+  </div>
+  </body>
+</html>
