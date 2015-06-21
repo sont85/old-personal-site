@@ -3,8 +3,11 @@ var app = angular.module("contact", ["angular-md5"]);
 
 app.controller("mainCtrl", function(md5) {
   cScope = this;
-  var localStorageContacts = localStorage.getItem("ContactList")
-  cScope.contactList = JSON.parse(localStorageContacts) || [{"firstName":"Son","lastName":"Truong","email":"sont85@gmail.com","phoneNumber":"707-246-1547","gravatar":"http://www.gravatar.com/avatar/96d6b5ec926ebc3ecdc731eb03bf7aa6"}]
+  var localStorageContacts = JSON.parse(localStorage.getItem("ContactList")) 
+  if (localStorageContacts.join() === "") {
+    localStorageContacts = [{firstName: "Son", lastName: "Truong", email: "sont85@gmail.com", phoneNumber: "707-246-1547", gravatar: "http://www.gravatar.com/avatar/96d6b5ec926ebc3ecdc731eb03bf7aa6"}]
+  }
+  cScope.contactList = localStorageContacts
 
   cScope.headerList = Object.keys(cScope.contactList[0])
   cScope.addContact = function(contact) {
