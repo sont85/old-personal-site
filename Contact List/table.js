@@ -3,11 +3,15 @@ var app = angular.module("contact", ["angular-md5"]);
 
 app.controller("mainCtrl", function(md5) {
   cScope = this;
+  var defaultData = [{firstName: "Son", lastName: "Truong", email: "sont85@gmail.com", phoneNumber: "707-246-1547", gravatar: "http://www.gravatar.com/avatar/96d6b5ec926ebc3ecdc731eb03bf7aa6"}]
   var localStorageContacts = JSON.parse(localStorage.getItem("ContactList")) 
   if (localStorageContacts === null ) {
-    localStorageContacts = [{firstName: "Son", lastName: "Truong", email: "sont85@gmail.com", phoneNumber: "707-246-1547", gravatar: "http://www.gravatar.com/avatar/96d6b5ec926ebc3ecdc731eb03bf7aa6"}]
+    cScope.contactList = defaultData
+  } else if (localStorageContacts.join() === "") {
+    cScope.contactList = defaultData
+  } else {
+    cScope.contactList = localStorageContacts
   }
-  cScope.contactList = localStorageContacts
 
   cScope.headerList = Object.keys(cScope.contactList[0])
   cScope.addContact = function(contact) {
