@@ -8,8 +8,9 @@ app.controller("mainCtrl", function(md5) {
     };
 
   cScope = this;
-  var defaultData = [{First_Name: "Son", Last_Name: "Truong", Email: "sont85@gmail.com", Phone: "707-246-1547", Gravatar: "http://www.gravatar.com/avatar/96d6b5ec926ebc3ecdc731eb03bf7aa6"}]
-  var localStorageContacts = JSON.parse(localStorage.getItem("ContactList")) 
+  var defaultData = [{FirstName: "Son", LastName: "Truong", Email: "sont85@gmail.com", Phone: "707-246-1547", Gravatar: "http://www.gravatar.com/avatar/96d6b5ec926ebc3ecdc731eb03bf7aa6"}]
+  var localStorageContacts = JSON.parse(localStorage.getItem("ContactList"))
+
   if (localStorageContacts === null ) {
     cScope.contactList = defaultData
   } else if (localStorageContacts.join() === "") {
@@ -18,10 +19,10 @@ app.controller("mainCtrl", function(md5) {
     cScope.contactList = localStorageContacts
   }
 
-  cScope.headerList = Object.keys(defaultData[0])
   cScope.addContact = function(contact) {
+    contact.Gravatar = cScope.addGravatar(contact.Email);
+    debugger
     var copyContact = angular.copy(contact);
-    copyContact.Gravatar = cScope.addGravatar(contact.email);
     cScope.contactList.push(copyContact);
     localStorage.setItem("ContactList", JSON.stringify(cScope.contactList));
   }

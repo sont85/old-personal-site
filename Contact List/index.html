@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html ng-app="contact" ng-controller="mainCtrl as c">
-
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=.650">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -23,6 +22,9 @@
       .inputContact {
         padding: 15px;
         min-height: 420px; 
+      }
+      .btn-sm {
+        width: 55px;
       }
       @media(max-width:767px){
         .contactList {
@@ -75,13 +77,15 @@
           </div> <!-- end of collapse -->
         </div>
       </div><!-- end of navbar -->
+
+
       <h2 class="text-center">Contact List</h2>
       <div class="row">
         <div class="col-sm-3 inputContact">
           <h3 class="text-center">Add Contacts</h3>
           <form>
-            <input ng-model="contact.First_Name" class="form-control inputData" placeholder="First Name" >
-            <input ng-model="contact.Last_Name" class="form-control inputData" placeholder="Last Name" >
+            <input ng-model="contact.FirstName" class="form-control inputData" placeholder="First Name" >
+            <input ng-model="contact.LastName" class="form-control inputData" placeholder="Last Name" >
             <input ng-model="contact.Phone" class="form-control inputData" type="tel" placeholder="Phone Number">
             <input ng-model="contact.Email" class="form-control inputData" type="email" placeholder="email">
             <div class="text-center">
@@ -94,13 +98,15 @@
           <table class="table table-hover">
             <thead>
               <tr>
-              <th ng-click="c.sort(header); c.reverseSort = !c.reverseSort" ng-repeat="header in c.headerList track by $index">{{header}}</th>
+                <th ng-click="c.sort('FirstName'); c.reverseSort = !c.reverseSort">Full Name</th>
+                <th ng-click="c.sort('Email'); c.reverseSort = !c.reverseSort">Email</th>
+                <th ng-click="c.sort('Phone'); c.reverseSort = !c.reverseSort">Phone</th>
+                <th ng-click="c.sort('Avatar'); c.reverseSort = !c.reverseSort">Avatar</th>
               </tr>
             </thead>
             <tbody ng-repeat="contact in c.contactList | filter: search | orderBy: c.sortHeaderName : c.reverseSort track by $index">
               <tr ng-hide="c.edit === $index">
-                <td>{{contact.First_Name}}</td>
-                <td>{{contact.Last_Name}}</td>
+                <td>{{contact.FirstName}} {{contact.LastName}}</td>
                 <td>{{contact.Email}}</td>
                 <td>{{contact.Phone}}</td>
                 <td><img src="{{contact.Gravatar}}"></td>
@@ -110,11 +116,10 @@
                 </td>
               </tr>
               <tr ng-show="c.edit === $index">
-                <td><input type="text" ng-model="contact.First_Name" class="form-control"></td>
-                <td><input type="text" ng-model="contact.Last_Name" class="form-control"></td>
+                <td><input type="text" ng-model="contact.FirstName" class="form-control"></td>
+                <td><input type="text" ng-model="contact.LastName" class="form-control"></td>
                 <td><input type="text" ng-model="contact.Phone" class="form-control"></td>
                 <td><input type="text" ng-model="contact.Email" class="form-control"></td>
-                <td><input type="text" ng-model="contact.Gravatar" class="form-control"></td>
                 <td><input type="submit" ng-click="c.submitEdit(contact, $index)" class="form-control"></td>
               </tr>
             </tbody>
