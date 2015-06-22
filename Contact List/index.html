@@ -2,7 +2,7 @@
 <html ng-app="contact" ng-controller="mainCtrl as c">
 
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=.650">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -22,9 +22,16 @@
       .contactList,
       .inputContact {
         padding: 15px;
-        /*min-height: 800px; */
+        min-height: 420px; 
       }
-      @media
+      @media(max-width:767px){
+        .contactList {
+          min-height: 500px;
+        }
+        .inputContact {
+          min-height: 250px;
+        }
+      }
     </style>
   </head>
 
@@ -75,8 +82,8 @@
           <form>
             <input ng-model="contact.First_Name" class="form-control inputData" placeholder="First Name" >
             <input ng-model="contact.Last_Name" class="form-control inputData" placeholder="Last Name" >
-            <input ng-model="contact.Email" class="form-control inputData" type="email" placeholder="email" >
             <input ng-model="contact.Phone" class="form-control inputData" type="tel" placeholder="Phone Number">
+            <input ng-model="contact.Email" class="form-control inputData" type="email" placeholder="email">
             <div class="text-center">
             <button id="submitButton" class="btn btn-success" ng-click="c.addContact(contact); contact = null">Submit</button>
             </div>
@@ -87,21 +94,19 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                <th ng-click="c.sort(header); c.reverseSort = !c.reverseSort" ng-repeat="header in c.headerList">{{header}}</th>
+              <th ng-click="c.sort(header); c.reverseSort = !c.reverseSort" ng-repeat="header in c.headerList track by $index">{{header}}</th>
               </tr>
             </thead>
             <tbody ng-repeat="contact in c.contactList | filter: search | orderBy: c.sortHeaderName : c.reverseSort track by $index">
               <tr ng-hide="c.edit === $index">
                 <td>{{contact.First_Name}}</td>
                 <td>{{contact.Last_Name}}</td>
-                <td>{{contact.Phone}}</td>
                 <td>{{contact.Email}}</td>
+                <td>{{contact.Phone}}</td>
                 <td><img src="{{contact.Gravatar}}"></td>
-                <td>
-                  <button ng-click="c.deleteRow($index)" class="btn btn-default">delete</button>
-                </td>
-                <td>
-                  <button ng-click="c.editRow($index)" class="btn btn-default">edit</button>
+                <td class="btn-group" role="group">
+                  <button ng-click="c.deleteRow($index)" type="button" class="btn btn-danger btn-sm">Delete</button>
+                  <button ng-click="c.editRow($index)" type="button" class="btn btn-default btn-sm">Edit</button>
                 </td>
               </tr>
               <tr ng-show="c.edit === $index">
