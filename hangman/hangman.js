@@ -1,4 +1,3 @@
-"use strict";
 var words = [
 				{"PROGRAMMING":
 					[{"RUBY": "Gem"},
@@ -124,8 +123,8 @@ var words = [
 															];
 
 
-var startPos = [[150,145],[25,145],[25,25],[80,25],[80,45],[80,55],[80,65],[80,65],[80,100],[80,100]]
-var drawToPos = [[25,145],[25,25],[80,25],[80,35],[10,0],[80,100],[45,80],[115,80],[55,135],[105,135]]
+var startPos = [[150,145],[25,145],[25,25],[80,25],[80,45],[80,55],[80,65],[80,65],[80,100],[80,100]];
+var drawToPos = [[25,145],[25,25],[80,25],[80,35],[10,0],[80,100],[45,80],[115,80],[55,135],[105,135]];
 
 var word = "";
 var amountCorrect = 0;
@@ -154,14 +153,14 @@ function randomPick() {
 	displayCategory(categoryName);
 
 	console.log(categoryArray[randomNumber2]);
-	return categoryArray[randomNumber2]
+	return categoryArray[randomNumber2];
 
 }
 
 function buildHtml(length) {
-	var $letterHtml = "<div>"
+	var $letterHtml = "<div>";
 	for (var i=0; i<length; i++) {
-		$letterHtml += '<span class=\"letter\">__  </span>'
+		$letterHtml += '<span class=\"letter\">__  </span>';
 	}
 	$letterHtml += "</div>";
 	$("#wordDiv").html($letterHtml);
@@ -202,9 +201,9 @@ function animation(winLose) {
 	TweenMax.to(winLose, 6, {x: 600, rotation: 360, scale:0.5, delay:4, ease:Bounce.easeOut});
 	TweenMax.to(winLose, 6, {x: 0, rotation: 360, scale:1, delay:8});
 
-	TweenMax.to($("#winnerImage"), 1, {opacity:0,scale:0, ease:Bounce.easeOut})
-	TweenMax.to($("#winnerImage"), 3, {right: 200})
-	TweenMax.to($("#winnerImage"), 3, {left: 200, delay: 3})
+	TweenMax.to($("#winnerImage"), 1, {opacity:0,scale:0, ease:Bounce.easeOut});
+	TweenMax.to($("#winnerImage"), 3, {right: 200});
+	TweenMax.to($("#winnerImage"), 3, {left: 200, delay: 3});
 
 
 }
@@ -247,12 +246,12 @@ function reset(){
 	lettersWrong = [];
 	lettersPicked = [];
 	lives = 10;
-	hint = ""
+	hint = "";
 	strokeCount = 0;
-	amountCorrect = 0
-	letterKey = ""
-	word = ""
-	$("#winnerImage").addClass("hidden")
+	amountCorrect = 0;
+	letterKey = "";
+	word = "";
+	$("#winnerImage").addClass("hidden");
 	canvas.getContext("2d").clearRect(0, 0, canvas.width, canvas.height);
 	$("#winner").addClass("hidden");
 	$("#loser").addClass("hidden");
@@ -272,14 +271,14 @@ function compare(chosenLetter, word, $letterButtonKey){
 	} else {
 		for (var i=0; i<word.length;i++) {
 			if (word[i] === chosenLetter) {
-				letterIndex.push(i);;
+				letterIndex.push(i);
 			}
 		}
 	}
 	if (letterIndex.length === 0 && $letterButtonKey.hasClass("disabled")===false) {
 		lettersWrong.push(chosenLetter);
 		myCanvas();
-		lives -=1
+		lives -=1;
 		loseCheck();
 	} else {
 		addToDiv(letterIndex, chosenLetter);
@@ -302,6 +301,8 @@ function addToDiv(letterIndex, chosenLetter) {
 
 
 $(document).ready(function(){
+	"use strict";
+
     $("#email").tooltip();
     $(".animsition").animsition();
 
@@ -316,7 +317,7 @@ $(document).ready(function(){
 
 	window.addEventListener("keydown", function(event){
 		var letterPressed = String.fromCharCode(event.keyCode);
-		var $letterButtonKey = $("button:contains('"+letterPressed+"')")
+		var $letterButtonKey = $("button:contains('"+letterPressed+"')");
 		$letterButtonKey = $letterButtonKey.filter($(".letterButton"));
 		lettersPicked.push(letterPressed);
 		compare(letterPressed, word, $letterButtonKey);
