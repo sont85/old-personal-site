@@ -21,7 +21,6 @@ app.controller("mainCtrl", function(md5) {
 
   cScope.addContact = function(contact) {
     contact.Gravatar = cScope.addGravatar(contact.Email);
-    debugger
     var copyContact = angular.copy(contact);
     cScope.contactList.push(copyContact);
     localStorage.setItem("ContactList", JSON.stringify(cScope.contactList));

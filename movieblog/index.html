@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  	<script src="https://cdn.firebase.com/js/client/2.2.7/firebase.js"></script>
+    <script src="movieblog.js"></script>
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- <link href="movieblog.css" rel="stylesheet"> -->
+    <style>
+    .movie-picture {
+    	width: 500px;
+    	background-size: cover;
+    }
+    </style>
+  </head>
+
+  <body>
+  	<div class="container">
+	  	<div>
+		    <h1 class="text-center">Movie Blog</h1>
+		    <button id="logIn" class="btn btn-success pull-right">Log In with Google</button>
+		    <button id="logOut" class="btn btn-danger pull-right" style="display: none">Log Out</button>
+		    <h4 class="text-center" id="signInName"></h4>
+		  </div>
+  		<div class="row">
+			  <div class="col-sm-6">
+			  	<h3>Movie Review</h3>
+			  	<button id="movieSubmitButton" class="btn btn-default btn-sm">Submit Movie</button>
+			    <input id="movieNameInput" type="text" placeholder="movie title">
+			    <input id="movieYearInput" type="text" placeholder="year">
+			    <input id="pictureUrl" type="text" placeholder="picture url link">
+			   
+			    <div>
+				    <textarea id="summaryInput" rows="8" cols="63"></textarea>
+				  </div>
+
+				</div>
+
+				<div class="col-sm-6">
+					<h3>Comments on Movies</h3>
+					<select id="movieSelection"></select>
+			    <button id="commentSubmitButton" class="btn btn-default btn-sm">Submit Comments</button>  
+				<div>
+					<textarea id="movieComments" rows="8" cols="55"></textarea>
+				</div>
+			</div>
+
+			<div class="movie-post-template">
+				<div class="page-header">
+					<span class="h3 movie-title"></span>
+					<span class="h3 movie-year"></span>
+					<span class="h4 posted-date pull-right"></span>
+				</div>
+				<img class="movie-picture img-responsive center-block">
+				<p class="movie-review"></p>
+				<h3>Comments</h3>
+				<div class="comment-section-template">
+				</div>
+			</div>
+				<div id="moviePost">
+				</div>
+			</div>
+		</div><!--end of container>
+  
+  </body>
+
+</html>

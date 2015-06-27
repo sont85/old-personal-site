@@ -1,7 +1,5 @@
-
-
 $(document).ready(function() {
-
+"use strict"
 	var toDoListArray = []
 	var completedListArray = []
 

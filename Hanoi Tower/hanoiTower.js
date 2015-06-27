@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	"use strict";
 	var $$ = {
 		numberOfTowers: 3,
 		largestNumber: null,
@@ -22,7 +23,7 @@ $(document).ready(function() {
 										arrayTower.push(tower);
 										i++;
 									}
-									$(".towers").remove()
+									$(".towers").remove();
 									$$.container1.append(arrayTower);
 								},
 			removeLayer: function(towerContainer) {
@@ -36,7 +37,7 @@ $(document).ready(function() {
 								},
 			winCheck: function() {
 									if ($$.container3.children().length === $$.numberOfTowers) {
-										$("#winText").text("Congratulation you solved a game "+$$.numberOfTowers+ "towers!!")
+										$("#winText").text("Congratulation you solved a game "+$$.numberOfTowers+ "towers!!");
 								}
 			}
 	};
